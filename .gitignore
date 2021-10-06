@@ -9,6 +9,7 @@
  
 # dependencies
 /backend/venv
+/backend/easy-parking/venv
 /frontend/easy-parking/node_modules
  
 # profiling files
