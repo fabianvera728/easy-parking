@@ -8,8 +8,8 @@ class Reservation(models.Model):
     # TODO: Define fields here
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     parking = models.ForeignKey(Parking, on_delete=models.CASCADE)
-    start_timestamp = models.DateTimeField()
-    final_timestamp = models.DateTimeField()
+    start_timestamp = models.DateTimeField(auto_now_add=True)
+    final_timestamp = models.DateTimeField(auto_now_add=True)
     is_reserved = models.BooleanField()
     is_active = models.BooleanField()
     net_cost = models.FloatField()

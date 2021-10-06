@@ -1,16 +1,20 @@
 from django.db import models
-from easy_parking.users.models.users import User
+from django.db.models.deletion import CASCADE
+from easy_parking.users.models.profiles import Profile
+from easy_parking.parking_lots.models.prices import Price
+from easy_parking.parking_lots.models.addresses import Address
 
 class Parking(models.Model):
     """Model definition for Parking."""
 
     # TODO: Define fields here
-    owner = models.ForeignKey(User)
-    slug_name = models.SlugField()
-    description = models.TextField()
-    phone_number = models.IntegerField()
-    price = models.FloatField()
-    limit_image = models.TextField()
+    owner = models.ForeignKey(Profile, on_delete=CASCADE)
+    slug_name = models.SlugField(max_length=50)
+    description = models.TextField(max_length=255)
+    phone_number = models.CharField(max_length=20)
+    price = models.ForeignKey(Price, on_delete=models.CASCADE)
+    address = models.ForeignKey(Address, null=True, on_delete=models.CASCADE)
+    limit_image = models.IntegerField()
 
     class Meta:
         """Meta definition for Parking."""

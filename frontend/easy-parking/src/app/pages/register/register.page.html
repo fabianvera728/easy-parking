@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sign up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-label>Create your account</ion-label>
+  <div class="input__custom">
+    <ion-icon name="search-outline"></ion-icon>
+    <ion-input placeholder="First name"></ion-input>
+  </div>
+  <div class="input__custom">
+    <ion-icon name="search-outline"></ion-icon>
+    <ion-input placeholder="Last name"></ion-input>
+  </div>
+  <div class="input__custom">
+    <ion-icon name="search-outline"></ion-icon>
+    <ion-input placeholder="email"></ion-input>
+  </div>
+  <div class="input__custom">
+    <ion-icon name="search-outline"></ion-icon>
+    <ion-input type="number" placeholder="phone_number"></ion-input>
+  </div>
+  <div class="input__custom">
+    <ion-icon name="search-outline"></ion-icon>
+    <ion-input type="text" placeholder="biography"></ion-input>
+  </div>
+  <div class="input__custom">
+    <ion-icon name="search-outline"></ion-icon>
+    <ion-input type="password" placeholder="password"></ion-input>
+  </div>
+  <ion-item>
+  <ion-label>Select type user</ion-label>
+    <ion-select [compareWith]="compareWith">
+      <ion-select-option *ngFor="let user of users" [value]="user">{{user.rol}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-content>

@@ -1,14 +1,14 @@
 from django.db import models
-from easy_parking.users.models.users import User
+from easy_parking.users.models.profiles import Profile
 from easy_parking.reservations.models.types import Type as TypeVehicle
 
 class Vehicle(models.Model):
     """Model definition for Vehicle."""
 
     # TODO: Define fields here
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
     license_plate = models.TextField(max_length=50)
-    type = models.ForeignKey(TypeVehicle)
+    type = models.ForeignKey(TypeVehicle, on_delete=models.CASCADE)
     brand_vehicle = models.TextField(max_length=50)
 
     class Meta:
