@@ -1,10 +1,15 @@
 <div align="center">
-    <img width="400" height="" src='https://svgshare.com/s/at2' title='' />
+  <center>
+    <img width="400" height="" src='https://svgshare.com/i/at2.svg' title='' />
+  </center>
 </div>
-
-<h1 style="margin-top:10px;" align="center"> 🚀
-  <strong> Easy Parking </strong> 🔭
-</h1>
+<div align="center">
+  <center>
+    <h1 style="margin-top:10px;" align="center"> 🚀
+      <strong> Easy Parking </strong> 🔭
+    </h1>
+  </center>
+</div>
 
 ## 🐧 Project explanation
 
