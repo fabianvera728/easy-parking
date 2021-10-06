@@ -10,17 +10,44 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
-@import "~@ionic/angular/css/core.css";
+@import '~@ionic/angular/css/core.css';
 
 /* Basic CSS for apps built with Ionic */
-@import "~@ionic/angular/css/normalize.css";
-@import "~@ionic/angular/css/structure.css";
-@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
 @import '~@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
-@import "~@ionic/angular/css/padding.css";
-@import "~@ionic/angular/css/float-elements.css";
-@import "~@ionic/angular/css/text-alignment.css";
-@import "~@ionic/angular/css/text-transformation.css";
-@import "~@ionic/angular/css/flex-utils.css";
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+.input__custom {
+  display: flex;
+  align-items: center;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  color: rgb(117, 117, 117);
+  padding: 0.2rem 0.3rem;
+  display: flex;
+  margin: 0.5rem 0.5rem;
+  width: -webkit-fill-available;
+  ion-icon {
+    margin: 0 0.5rem;
+  }
+}
+.input__custom:hover {
+  border: solid 1px rgb(184, 184, 184);
+  color: rgb(80, 80, 80);
+}
+.input__custom:active {
+  border: solid 1px rgb(184, 184, 184);
+  color: gray;
+}
+
+ion-icon {
+  margin: 0 0rem;
+}

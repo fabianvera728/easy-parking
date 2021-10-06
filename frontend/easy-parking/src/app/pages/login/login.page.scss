@@ -1,0 +1,11 @@
+ion-content {
+    --padding-end: 2rem;
+    --padding-bottom: 4rem;
+    --padding-start: 2rem;
+    --background: #f9f9f9;
+    .form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    } 
+}
