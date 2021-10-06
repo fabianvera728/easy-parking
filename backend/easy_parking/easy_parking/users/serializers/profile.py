@@ -18,10 +18,11 @@ class ProfileSerializer(serializers.ModelSerializer):
         :return: returns a successfully created student record
         """
         user_data = validated_data.pop('user')
+        print(user_data)
         user = UserSerializer.create(UserSerializer(), validated_data=user_data)
+        print(user.pk)
         profile, created = Profile.objects.update_or_create(user=user,
                             phone_number=validated_data.pop('phone_number'), 
-                            reputation=validated_data.pop('reputation'), 
                             picture=validated_data.pop('picture'),
                             biography=validated_data.pop('biography'))
         return profile

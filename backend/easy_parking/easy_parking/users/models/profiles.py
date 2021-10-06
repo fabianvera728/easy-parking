@@ -3,7 +3,7 @@ from easy_parking.users.models.users import User
 from easy_parking.utils.base_model import BaseModel
 
 class Profile(BaseModel):
-    phone_number = models.IntegerField()
+    phone_number = models.CharField(max_length=20)
     reputation = models.FloatField(default=0)
     picture = models.TextField()
     biography = models.TextField()
