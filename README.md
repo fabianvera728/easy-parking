@@ -15,7 +15,7 @@
 
 The application aims to make it easier for users to find a parking space quickly and efficiently, being able to reserve at the same time that the car park owners offer their spaces with the option of adding other extra services such as laundry or workshop, based on existing applications to investigate their strengths and correct their flaws to create friendly and profitable software for all parties involved, having flexibility in its use
 
-## 🐟 To get started
+## 🐟 To get started 
 
 1. Clone this repository: `https://gitlab.com/fabianvera728/easy-parking.git`.
 
@@ -36,7 +36,7 @@ The application aims to make it easier for users to find a parking space quickly
 
 ### 🐋 Configure and run the ionic project
 
-1. C : ``.
+1. C2 : ``.
 
 ## 📷 Screenshots
 ### 🦀 Home
