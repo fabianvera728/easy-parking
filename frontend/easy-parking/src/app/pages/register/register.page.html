@@ -5,35 +5,56 @@
 </ion-header>
 
 <ion-content>
-  <ion-label>Create your account</ion-label>
-  <div class="input__custom">
-    <ion-icon name="search-outline"></ion-icon>
-    <ion-input placeholder="First name"></ion-input>
-  </div>
-  <div class="input__custom">
-    <ion-icon name="search-outline"></ion-icon>
-    <ion-input placeholder="Last name"></ion-input>
-  </div>
-  <div class="input__custom">
-    <ion-icon name="search-outline"></ion-icon>
-    <ion-input placeholder="email"></ion-input>
-  </div>
-  <div class="input__custom">
-    <ion-icon name="search-outline"></ion-icon>
-    <ion-input type="number" placeholder="phone_number"></ion-input>
-  </div>
-  <div class="input__custom">
-    <ion-icon name="search-outline"></ion-icon>
-    <ion-input type="text" placeholder="biography"></ion-input>
-  </div>
-  <div class="input__custom">
-    <ion-icon name="search-outline"></ion-icon>
-    <ion-input type="password" placeholder="password"></ion-input>
-  </div>
-  <ion-item>
-  <ion-label>Select type user</ion-label>
-    <ion-select [compareWith]="compareWith">
-      <ion-select-option *ngFor="let user of users" [value]="user">{{user.rol}}</ion-select-option>
-    </ion-select>
-  </ion-item>
+  <form [formGroup]="register_form" action="" class="form">
+    <ion-label>Create your account</ion-label>
+    <div formGroupName="user" class="register__user">
+      <div class="input__custom">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-input
+          formControlName="username"
+          placeholder="Username"
+        ></ion-input>
+      </div>
+      <div class="input__custom">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-input
+          formControlName="first_name"
+          placeholder="First name"
+        ></ion-input>
+      </div>
+      <div class="input__custom">
+        <ion-icon name="search-outline"></ion-icon>
+        <ion-input formControlName="last_name" placeholder="Last name"></ion-input>
+      </div>
+      <div class="input__custom">
+        <ion-icon name="search-outline"></ion-icon>
+        <ion-input formControlName="email" placeholder="Email"></ion-input>
+      </div>
+      <ion-item>
+        <ion-label>Select type user</ion-label>
+        <ion-select formControlName="is_superuser" [compareWith]="compareWith">
+          <ion-select-option *ngFor="let user of users" [value]="user.id === 2">
+            {{user.rol}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="input__custom">
+        <ion-icon name="key-outline"></ion-icon>
+        <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+      </div>
+    </div>
+    <div class="input__custom">
+      <ion-icon name="search-outline"></ion-icon>
+      <ion-input formControlName="phone_number" type="text" placeholder="Phone number"></ion-input>
+    </div>
+    <div class="input__custom">
+      <ion-icon name="search-outline"></ion-icon>
+      <ion-input  formControlName="biography" type="text" placeholder="Biography"></ion-input>
+    </div>
+  
+    <ion-button (click)="onSubmit()">Register</ion-button>
+  </form>
 </ion-content>
+<pre>
+  {{ register_form.value | json }}
+</pre>

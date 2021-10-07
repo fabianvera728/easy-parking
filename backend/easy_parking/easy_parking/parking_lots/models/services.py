@@ -1,12 +1,13 @@
+# Django
 from django.db import models
+
 
 class Service(models.Model):
     """Model definition for Service."""
 
-    # TODO: Define fields here
     name = models.TextField(max_length=50)
-    verbose_name = models.TextField(max_length=70)
-    description = models.TextField(max_length=254)
+    verbose_name = models.TextField(max_length=70, blank=True)
+    description = models.TextField(max_length=500, blank=True)
 
     class Meta:
         """Meta definition for Service."""
@@ -15,5 +16,4 @@ class Service(models.Model):
         verbose_name_plural = 'Services'
 
     def __str__(self):
-        """Unicode representation of Service."""
-        pass
+        return f'Service {self.name}'

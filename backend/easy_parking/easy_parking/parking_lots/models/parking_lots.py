@@ -1,20 +1,23 @@
+# Django
 from django.db import models
 from django.db.models.deletion import CASCADE
+
+# Models
 from easy_parking.users.models.profiles import Profile
 from easy_parking.parking_lots.models.prices import Price
 from easy_parking.parking_lots.models.addresses import Address
 
+
 class Parking(models.Model):
     """Model definition for Parking."""
 
-    # TODO: Define fields here
     owner = models.ForeignKey(Profile, on_delete=CASCADE)
-    slug_name = models.SlugField(max_length=50)
-    description = models.TextField(max_length=255)
+    slug_name = models.SlugField(max_length=50, unique=True)
+    description = models.TextField(max_length=500, blank=True)
     phone_number = models.CharField(max_length=20)
     price = models.ForeignKey(Price, on_delete=models.CASCADE)
     address = models.ForeignKey(Address, null=True, on_delete=models.CASCADE)
-    limit_image = models.IntegerField()
+    limit_image = models.PositiveIntegerField(default=20)
 
     class Meta:
         """Meta definition for Parking."""
@@ -23,5 +26,4 @@ class Parking(models.Model):
         verbose_name_plural = 'Parkings'
 
     def __str__(self):
-        """Unicode representation of Parking."""
-        pass
+        return f'Parking {self.slug_name} by {self.owner}'

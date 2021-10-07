@@ -1,10 +1,25 @@
-from django.urls import path
-from easy_parking.reservations.views.reservations import ListReservations
-from easy_parking.reservations.views.places import ListPlaces
-from easy_parking.reservations.views.types import ListTypes
+# Django
+from django.urls import include, path
+
+# Django REST Framework
+from rest_framework.routers import DefaultRouter
+
+# Views
+from .views.reservations import Reservations
+from .views.places import Places
+from .views.types import Types
+
+# urlpatterns = [
+#     path('reservations/', Reservations.as_view(), name="reservations"),
+#     path('places/', Places.as_view(), name="places"),
+#     path('reservations/types/', Types.as_view(), name="types")
+# ]
+
+router = DefaultRouter()
+router.register(r'reservations', Reservations, basename='reservation')
+router.register(r'places', Places, basename='place')
+router.register(r'types', Types, basename='type')
 
 urlpatterns = [
-    path('types/', ListTypes.as_view(), name="view types"),
-    path('places/', ListPlaces.as_view(), name="view places"),
-    path('reservations/', ListReservations.as_view(), name="view reservations")
+    path('', include(router.urls))
 ]
