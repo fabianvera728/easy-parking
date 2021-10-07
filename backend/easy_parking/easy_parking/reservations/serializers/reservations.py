@@ -45,3 +45,9 @@ class ReservationSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Invalid license plate of vehicle.')
         self.context['vehicle'] = vehicle.pk
         return data
+
+
+class ListReservationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reservation
+        fields = "__all__"
