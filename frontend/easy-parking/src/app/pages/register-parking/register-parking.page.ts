@@ -11,7 +11,6 @@ import { ParkingService } from '../../core/services/parking/parking/parking.serv
 })
 export class RegisterParkingPage implements OnInit {
 
-  @ViewChild('slideParkingRegister') slides: IonSlides;
 
   parking_form!: FormGroup;
 
@@ -46,9 +45,9 @@ export class RegisterParkingPage implements OnInit {
     });
   }
 
-  swipeNext(){
+  /* swipeNext(){
     this.slides.slideNext();
-  }
+  } */
 
   onSubmit(){
     this.parking_service.createParking(this.parking_form.value).subscribe(

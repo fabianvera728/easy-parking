@@ -24,6 +24,16 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+@import './styles/shared.scss';
+
+:root{
+  --color-primary: #F7686A;
+  --color-primary-light: #f8b8b9;
+  --color-secondary-gray-light: #f9f9f9;
+  --color-gray-1: rgb(150, 150, 150);
+  --rounded-small: 5px;
+  --rounded-medium: 10px;
+}
 
 .input__custom {
   display: flex;
@@ -51,3 +61,4 @@
 ion-icon {
   margin: 0 0rem;
 }
+

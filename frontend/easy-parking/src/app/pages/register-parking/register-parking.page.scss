@@ -1,8 +1,35 @@
+ion-toolbar {
+  --padding-end: 1rem;
+  --padding-start: 1rem;
+  --padding-bottom: 1rem;
+  --border-style: none;
+  --background: #ffffff;
+  --background-color: #ffffff;
+  --ion-color-base: transparent !important;
+  div {
+    display: flex;
+    padding-top: 0.5rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: space-between;
+    ion-button {
+      --background: #ffffff;
+      --padding-end: 0.5rem;
+      --padding-start: 0.5rem;
+      --background-activated: rgb(230, 230, 230);
+      --color: rgb(126, 126, 126);
+      --box-shadow: 1px 1px 10px 1px #d8d8d8;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+}
+
 ion-content {
   --padding-end: 2rem;
   --padding-bottom: 4rem;
   --padding-start: 2rem;
-  --background: #f9f9f9;
+  --background: #ffffff;
   /* .form {
     display: flex;
     flex-direction: column;
@@ -45,3 +72,17 @@ ion-slides {
   p b {
     color: var(--ion-text-color, #000000);
   }
+
+.input__custom{
+  background: #f9f9f9;
+}
+
+
+ion-input{
+  padding-left: .5rem;
+  text-align: start;
+}
+.register__user{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 8rem),1fr));
+}

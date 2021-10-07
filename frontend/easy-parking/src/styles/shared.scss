@@ -1,0 +1,36 @@
+ion-toolbar {
+    --padding-end: 1rem;
+    --padding-start: 1rem;
+    --border-style: none;
+    --background-color: transparent;
+    --background: transparent;
+    --ion-color-base: transparent !important;
+    div{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      ion-button{
+        --background: #ffffff;
+        --padding-end: .5rem;
+        --padding-start: .5rem;
+        --color: rgb(126, 126, 126);
+        --background-activated: rgb(230, 230, 230);
+        --color: rgb(126, 126, 126);
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+      .brand__icon{
+        font-size: 20px;
+        zoom: 1.5;
+      }
+    }
+  }
+
+
+.has-tx-gray-light{
+  color: rgb(161, 161, 161);
+}
+
+.has-bg-secondary-gray-light{
+  background: var(--color-secondary-gray-light);
+}

@@ -1,0 +1,42 @@
+ion-content {
+    --padding-end: 2rem;
+    --padding-bottom: 6rem;
+    --padding-top: 2rem;
+    --padding-start: 2rem;
+    --background: #ffffff;
+}
+.vehicles__vehicle{
+    .vehicles__vehicle-info{
+        h2{
+            margin:  .5rem 0;
+            text-align: start;
+        }
+        p{
+            margin: .5rem 0;
+            font-size: .6em;
+            color: rgb(145, 145, 145);
+            text-align: start;
+        }
+    }
+}
+
+ion-card{
+    --background: #fff;
+    border-radius: var(--rounded-medium);
+    box-shadow: 1px 1px 10px 2px #e7e7e7;
+    img{
+        width: 100%;
+        height: auto;
+        border-radius: 0 0 var(--rounded-medium) var(--rounded-medium);
+    }
+}
+
+ion-fab{
+    transform: translate(-15px,-90px);
+    ion-fab-button{
+         --background: var(--color-primary);
+        /* –ion-color-base: rgb(219, 52, 52) !important; */
+    }
+       
+    
+}

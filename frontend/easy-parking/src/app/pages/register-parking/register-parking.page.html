@@ -1,38 +1,46 @@
-<ion-header>
+<ion-header mode="ios" class="ion-no-border">
   <ion-toolbar>
-    <ion-title>register-parking</ion-title>
+    <div>
+      <ion-button  [routerLink]="['/tabs']">
+        <ion-icon size="large" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content mode="ios">
   <form [formGroup]="parking_form" action="" class="form">
-    <ion-slides mode="ios" #slideParkingRegister>
-      <ion-slide>
-        <ion-label>Create your parking</ion-label>
-        <div formGroupName="parking" class="register__user">
+   <!--  <ion-slides mode="ios" #slideParkingRegister>
+      <ion-slide> -->
+        <ion-text class="ion-text-start ion-padding-top" >
+          <h2><strong>Create your parking</strong></h2>
+        </ion-text>
+        <div formGroupName="parking" class="ion-padding-top">
+          <ion-label position="floating" class=ion-text-start>Parking</ion-label>
           <div class="input__custom">
             <ion-icon name="person-outline"></ion-icon>
             <ion-input
+            class="ion-text-start"
               formControlName="slug_name"
               placeholder="Slug name"
             ></ion-input>
           </div>
           <div class="input__custom">
-            <ion-icon name="person-outline"></ion-icon>
+            <ion-icon name="text-outline"></ion-icon>
             <ion-input
               formControlName="description"
               placeholder="Description"
             ></ion-input>
           </div>
           <div class="input__custom">
-            <ion-icon name="search-outline"></ion-icon>
+            <ion-icon name="call-outline"></ion-icon>
             <ion-input
               formControlName="phone_number"
               placeholder="Phone number"
             ></ion-input>
           </div>
           <div class="input__custom">
-            <ion-icon name="search-outline"></ion-icon>
+            <ion-icon name="image-outline"></ion-icon>
             <ion-input
               type="number"
               formControlName="limit_image"
@@ -40,10 +48,10 @@
             ></ion-input>
           </div>
         </div>
-        <ion-label>Price</ion-label>
+        <ion-label>Prices</ion-label>
         <div formGroupName="price" class="register__user">
           <div class="input__custom">
-            <ion-icon name="person-outline"></ion-icon>
+            <ion-icon name="partly-sunny-outline"></ion-icon>
             <ion-input
               type="number"
               formControlName="morning"
@@ -51,7 +59,7 @@
             ></ion-input>
           </div>
           <div class="input__custom">
-            <ion-icon name="person-outline"></ion-icon>
+            <ion-icon name="sunny-outline"></ion-icon>
             <ion-input
               type="number"
               formControlName="evening"
@@ -59,13 +67,13 @@
             ></ion-input>
           </div>
           <div class="input__custom">
-            <ion-icon name="search-outline"></ion-icon>
+            <ion-icon name="moon-outline"></ion-icon>
             <ion-input 
               type="number"  
             formControlName="night" placeholder="Night"></ion-input>
           </div>
           <div class="input__custom">
-            <ion-icon name="search-outline"></ion-icon>
+            <ion-icon name="calendar-outline"></ion-icon>
             <ion-input
               type="number"
               formControlName="weekend"
@@ -73,12 +81,6 @@
             ></ion-input>
           </div>
         </div>
-        <ion-button (click)="swipeNext()" fill="clear">
-          Next
-          <ion-icon slot="end" name="arrow-forward"></ion-icon>
-        </ion-button>
-      </ion-slide>
-      <ion-slide>
         <ion-label>Address</ion-label>
         <div formGroupName="address" class="register__user">
           <div class="input__custom">
@@ -127,12 +129,11 @@
             ></ion-input>
           </div>
         </div>
-        <ion-button (click)="onSubmit()">
+        <ion-button slot="center" (click)="onSubmit()">
           Registrar parqueadero
-          <ion-icon slot="end" name="arrow-forward"></ion-icon>
         </ion-button>
-      </ion-slide>
-    </ion-slides>
+   <!--    </ion-slide>
+    </ion-slides> -->
 
     <!-- <ion-button (click)="onSubmit()">Register</ion-button> -->
   </form>
