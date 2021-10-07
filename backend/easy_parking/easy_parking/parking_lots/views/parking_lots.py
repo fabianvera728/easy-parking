@@ -16,17 +16,6 @@ class ListParkings(APIView):
         return Response(serializer.data)
     
     def post(self, request, *args, format=None):
-        print(request.data['address'])
-        """ address = AddressSerializer(data=request.data['address'])
-        if address.is_valid():
-            address.save()  
-        price = PriceSerializer(data=request.data['price'])
-        if price.is_valid():
-            price.save()
-            
-        request.data['address'] = address.data['id']
-        request.data['price'] = price.data['id'] """
-        
         serializer = ParkingSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
