@@ -5,7 +5,6 @@ from django.db import models
 class Type(models.Model):
     """Model definition for Type."""
 
-    # TODO: Define fields here
     name = models.TextField(max_length=50)
     description = models.TextField(max_length=254)
     verbose_name = models.TextField(max_length=50, blank=True)

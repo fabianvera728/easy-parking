@@ -4,9 +4,10 @@ from django.db import models
 # Models
 from easy_parking.users.models.profiles import Profile
 from easy_parking.reservations.models.types import Type as TypeVehicle
+from easy_parking.utils.base_model import BaseModel
 
 
-class Vehicle(models.Model):
+class Vehicle(BaseModel):
     """Model definition for Vehicle."""
 
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE)

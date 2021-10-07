@@ -3,9 +3,10 @@ from django.db import models
 
 # Models
 from easy_parking.reviews.models.reviews import Review
+from easy_parking.utils.base_model import BaseModel
 
 
-class Comment(models.Model):
+class Comment(BaseModel):
     """Model definition for Comments."""
 
     comments = models.TextField(max_length=500)
