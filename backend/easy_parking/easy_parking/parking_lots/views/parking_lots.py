@@ -23,7 +23,7 @@ class Parkings(mixins.CreateModelMixin,
     @action(detail=True, methods=['get'])
     def invitations(self, request, *args, **kwargs):
         return Response({"data": 'Hola'})
-    
+
 # class ListParkings(APIView):
 #
 #     def get(self, request):

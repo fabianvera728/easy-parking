@@ -1,4 +1,4 @@
-# Django est framework
+# Django restframework
 from rest_framework import mixins, viewsets
 
 # Models

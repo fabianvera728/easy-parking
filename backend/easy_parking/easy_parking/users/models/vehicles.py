@@ -23,4 +23,4 @@ class Vehicle(models.Model):
 
     def __str__(self):
         """Unicode representation of Vehicle."""
-        return f'{self.brand_vehicle} - {self.license_plate}'
+        return f'{self.license_plate}'

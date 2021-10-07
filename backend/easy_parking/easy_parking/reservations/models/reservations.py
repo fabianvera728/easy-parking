@@ -17,10 +17,11 @@ class Reservation(models.Model):
     is_active = models.BooleanField(default=False)
     net_cost = models.FloatField(default=0)
     is_paid = models.FloatField(default=False)
+    description = models.TextField(max_length=500, blank=True)
 
     class Meta:
         verbose_name = 'Reservation'
         verbose_name_plural = 'Reservations'
 
     def __str__(self):
-        return f'{self.vehicle} in {self.parking}'
+        return f'{self.pk} in {self.parking}'

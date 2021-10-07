@@ -26,4 +26,4 @@ class Parking(models.Model):
         verbose_name_plural = 'Parkings'
 
     def __str__(self):
-        return f'Parking {self.slug_name} by {self.owner}'
+        return f'{self.slug_name}'
