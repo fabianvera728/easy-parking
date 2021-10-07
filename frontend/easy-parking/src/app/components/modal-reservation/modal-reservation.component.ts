@@ -20,9 +20,9 @@ export class ModalComponent implements OnInit {
         {
             id: 1,
             owner: 1,
-            license_plate: 'sadfdsf',
+            license_plate: 'XLF-402',
             type: 1,
-            brand_vehicle: 'hola'
+            brand_vehicle: 'Ford 350'
         },
         {
             id: 2,

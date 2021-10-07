@@ -15,7 +15,7 @@
   <div>
     <span><strong>Featured</strong></span>
      <ion-slides pager>
-    <ion-slide [routerLink]="['/detail-parking']" *ngFor="let parking of parkings" >
+    <ion-slide [routerLink]="['/detail-parking', parking.slug_name]" *ngFor="let parking of parkings" >
       <ion-card >
         <img src="https://holatelcel.com/wp-content/uploads/2017/08/Smart-Parking-1280x720.jpg" />
         <ion-card-header>

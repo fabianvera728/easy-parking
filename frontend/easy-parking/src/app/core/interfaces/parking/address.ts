@@ -6,6 +6,6 @@ export interface Address{
     city: string;
     street: string;
     number_street: number;
-    neighbothood: string;
+    neighborhood: string;
     description: string;
 }

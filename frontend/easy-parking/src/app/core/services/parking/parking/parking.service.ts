@@ -26,30 +26,21 @@ export class ParkingService {
 
   createParking(parking: any) {
     const owner = this.storage_service.getCurrentSession().user.user.id;
-    /* let address: number;
-    let price: number;
-
-    this.createAddress(parking.address).subscribe(
-      (data) => {
-        address = data.id;
-      }
-    );
-    this.createPrice(parking.price).subscribe(
-      (data) => {
-        price = data.id;
-      }
-    ); */
-
     const parking_data: any = {
       ...parking.parking,
       address: parking.address,
       price: parking.price,
-      owner: owner
+      owner
     };
     console.log(parking_data);
 
     return this.http.post<Parking>(this.BASE_URL_API + 'parkings/', parking_data);
   }
+
+  getParking(slug_name: string){
+    return this.http.get<Parking>(`${this.BASE_URL_API}parkings/${slug_name}/`);
+  }
+
 
   listTypesVehicle(){
     return this.http.get<TypesVehicle[]>(`${this.BASE_URL_API}types/`);
