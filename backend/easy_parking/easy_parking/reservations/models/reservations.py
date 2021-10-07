@@ -4,9 +4,10 @@ from django.db import models
 # Models
 from easy_parking.users.models.vehicles import Vehicle
 from easy_parking.parking_lots.models.parking_lots import Parking
+from easy_parking.utils.base_model import BaseModel
 
 
-class Reservation(models.Model):
+class Reservation(BaseModel):
     """Model definition for Reservation."""
 
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)

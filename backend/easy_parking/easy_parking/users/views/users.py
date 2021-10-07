@@ -9,6 +9,7 @@ from easy_parking.reservations.models.reservations import Reservation
 
 # Serializers
 from easy_parking.users.serializers.profile import ProfileSerializer
+from easy_parking.reservations.serializers.reservations import ReservationSerializer
 
 
 class Users(mixins.CreateModelMixin,
@@ -23,8 +24,8 @@ class Users(mixins.CreateModelMixin,
     @action(detail=True, methods=['get'])
     def reservations(self, request, *args, **kwargs):
         reservations = Reservation.objects.filter(vehicle__owner__user=self.get_object())
-        print([res for res in reservations], '\n\n')
-        return Response([res for res in reservations])
+        serializer = ReservationSerializer(reservations, many=True)
+        return Response(serializer.data)
 
 # class ListUsers(APIView):
 #

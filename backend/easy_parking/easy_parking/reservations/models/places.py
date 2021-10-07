@@ -14,6 +14,10 @@ class Place(models.Model):
     parking = models.ForeignKey(Parking, on_delete=models.CASCADE)
     description = models.TextField(max_length=500, blank=True)
 
+    used_places = models.PositiveIntegerField(default=0)
+    remaining_places = models.PositiveIntegerField(default=0)
+    reserved_limit = models.PositiveIntegerField(default=0)
+
     class Meta:
         """Meta definition for Place."""
         verbose_name = 'Place'

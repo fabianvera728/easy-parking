@@ -1,5 +1,7 @@
+# Django restframework
 from rest_framework import serializers
 
+# Serializers
 from easy_parking.parking_lots.models.addresses import Address
 from easy_parking.parking_lots.models.parking_lots import Parking
 from easy_parking.parking_lots.models.prices import Price
@@ -14,6 +16,11 @@ class ParkingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Parking
         fields = "__all__"
+        read_only_fields = (
+            'address',
+            'price',
+            'owner'
+        )
 
     def create(self, validated_data):
         address_data = validated_data["address"]
@@ -27,3 +34,16 @@ class ParkingSerializer(serializers.ModelSerializer):
 
         parking, created = Parking.objects.update_or_create(**validated_data)
         return parking
+
+
+# class ListParkingSerializer(serializers.ModelSerializer):
+#     address = AddressSerializer()
+#     price = PriceSerializer()
+#
+#     class Meta:
+#         model = Parking
+#         fields = "__all__"
+#         read_only_fields = (
+#             'address',
+#             'price',
+#         )

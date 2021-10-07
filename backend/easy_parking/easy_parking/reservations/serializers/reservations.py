@@ -1,6 +1,5 @@
 # Django restframework
 from rest_framework import serializers
-from rest_framework.generics import get_object_or_404
 
 # Models
 from easy_parking.users.models.vehicles import Vehicle
@@ -15,6 +14,10 @@ class ReservationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reservation
         fields = "__all__"
+        read_only_fields = (
+            'parking',
+            'vehicle',
+        )
 
     def create(self, validated_data):
         validated_data.pop('parking')
@@ -33,7 +36,7 @@ class ReservationSerializer(serializers.ModelSerializer):
             )
         except Parking.DoesNotExist:
             raise serializers.ValidationError('Invalid parking slug name.')
-        self.context['parking'] = parking.pk
+        self.context['parking'] = parking
         return data
 
     def validate_vehicle(self, data):
@@ -43,5 +46,11 @@ class ReservationSerializer(serializers.ModelSerializer):
             )
         except Vehicle.DoesNotExist:
             raise serializers.ValidationError('Invalid license plate of vehicle.')
-        self.context['vehicle'] = vehicle.pk
+        self.context['vehicle'] = vehicle
         return data
+
+
+# class ListReservationSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Reservation
+#         fields = "__all__"
