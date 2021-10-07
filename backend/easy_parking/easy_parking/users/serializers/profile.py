@@ -1,28 +1,23 @@
-from django.db.models import fields
+# Django restframework
 from rest_framework import serializers
+
+# Models
 from easy_parking.users.models.profiles import Profile
+
+# Serializers
 from easy_parking.users.serializers.users import UserSerializer
 
-class ProfileSerializer(serializers.ModelSerializer):
 
+class ProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer(required=True)
-    
+
     class Meta:
         model = Profile
-        fields = ("phone_number", "reputation", "picture", "biography", "user")
-        
+        fields = "__all__"
+
     def create(self, validated_data):
-        """
-        Overriding the default create method of the Model serializer.
-        :param validated_data: data containing all the details of student
-        :return: returns a successfully created student record
-        """
         user_data = validated_data.pop('user')
-        print(user_data)
         user = UserSerializer.create(UserSerializer(), validated_data=user_data)
-        print(user.pk)
-        profile, created = Profile.objects.update_or_create(user=user,
-                            phone_number=validated_data.pop('phone_number'), 
-                            picture=validated_data.pop('picture'),
-                            biography=validated_data.pop('biography'))
+        validated_data.user = user
+        profile, created = Profile.objects.update_or_create(**validated_data)
         return profile

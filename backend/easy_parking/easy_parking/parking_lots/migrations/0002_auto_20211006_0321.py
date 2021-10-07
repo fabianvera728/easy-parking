@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('city', models.TextField(max_length=50)),
                 ('street', models.TextField(max_length=50)),
                 ('number_street', models.IntegerField()),
-                ('neighbothood', models.TextField(max_length=50)),
+                ('neighborhood', models.TextField(max_length=50)),
                 ('description', models.TextField(max_length=254)),
             ],
             options={

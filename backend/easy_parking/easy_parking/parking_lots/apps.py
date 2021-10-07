@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class ParkingLotsConfig(AppConfig):
-    name = 'parking_lots'
+    name = 'easy_parking.parking_lots'

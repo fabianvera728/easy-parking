@@ -2,16 +2,16 @@
 from rest_framework import mixins, viewsets
 
 # Models
-from easy_parking.users.models.vehicles import Vehicle
+from easy_parking.reviews.models.reviews import Review
 
 # Serializers
-from easy_parking.users.serializers.vehicles import VehicleSerializer
+from easy_parking.reviews.serializers.reviews import ReviewSerializer
 
 
-class Vehicles(mixins.CreateModelMixin,
+class Reviews(mixins.CreateModelMixin,
                mixins.RetrieveModelMixin,
                mixins.UpdateModelMixin,
                mixins.ListModelMixin,
                viewsets.GenericViewSet):
-    serializer_class = VehicleSerializer
-    queryset = Vehicle.objects.all()
+    serializer_class = ReviewSerializer
+    queryset = Review.objects.all()

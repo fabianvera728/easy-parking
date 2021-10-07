@@ -1,9 +1,10 @@
+# Django
 from django.db import models
+
 
 class Price(models.Model):
     """Model definition for Price."""
 
-    # TODO: Define fields here
     morning = models.FloatField()
     evening = models.FloatField()
     night = models.FloatField()
@@ -16,5 +17,6 @@ class Price(models.Model):
         verbose_name_plural = 'Prices'
 
     def __str__(self):
-        """Unicode representation of Price."""
-        pass
+        return f'Prices: [{self.morning}, ' \
+               f'{self.evening}, {self.night},' \
+               f' {self.weekend}, ]'

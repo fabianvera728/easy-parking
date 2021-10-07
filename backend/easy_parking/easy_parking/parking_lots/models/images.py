@@ -1,12 +1,18 @@
+# Django
 from django.db import models
+
+# Models
 from easy_parking.parking_lots.models.parking_lots import Parking
+
 
 class Image(models.Model):
     """Model definition for Image."""
 
-    # TODO: Define fields here
-    path = models.ImageField()
-    verbose_name = models.TextField()
+    path = models.ImageField("Parking's image",
+                             upload_to='parking/gallery/',
+                             blank=True,
+                             null=True)
+    verbose_name = models.TextField(blank=True)
     parking = models.ForeignKey(Parking, on_delete=models.CASCADE)
 
     class Meta:
@@ -16,5 +22,4 @@ class Image(models.Model):
         verbose_name_plural = 'Images'
 
     def __str__(self):
-        """Unicode representation of Image."""
-        pass
+        return f"Image of {self.parking}' gallery"

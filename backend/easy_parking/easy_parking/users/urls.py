@@ -1,8 +1,17 @@
-from django.urls import path
-from easy_parking.users.views.vehicles import ListVehicles
-from easy_parking.users.views.users import ListUsers
+# Django
+from django.urls import path, include
+
+# Django REST Framework
+from rest_framework.routers import DefaultRouter
+
+# Views
+from easy_parking.users.views.vehicles import Vehicles
+from easy_parking.users.views.users import Users
+
+router = DefaultRouter()
+router.register(r'vehicles', Vehicles, basename='vehicle')
+router.register(r'users', Users, basename='user')
 
 urlpatterns = [
-    path('users/', ListUsers.as_view(), name="view users"),
-    path("vehicles/", ListVehicles.as_view(), name="view vehicles")
+    path('', include(router.urls))
 ]

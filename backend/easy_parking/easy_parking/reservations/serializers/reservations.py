@@ -1,37 +1,47 @@
-from django.db.models import fields
+# Django restframework
 from rest_framework import serializers
+from rest_framework.generics import get_object_or_404
+
+# Models
+from easy_parking.users.models.vehicles import Vehicle
 from easy_parking.reservations.models.reservations import Reservation
+from easy_parking.parking_lots.models.parking_lots import Parking
+
 
 class ReservationSerializer(serializers.ModelSerializer):
-    
+    parking = serializers.CharField(max_length=200)
+    vehicle = serializers.CharField(max_length=200)
+
     class Meta:
         model = Reservation
         fields = "__all__"
-    
-    """ def create(self, validated_data):
-        
-        reservation, created = Reservation.objects.update_or_create(vehicle=validated_data.pop('vehicle'), 
-                            parking=validated_data.pop('parking'), 
-                            start_timestamp=validated_data.pop('start_timestamp'),
-                            final_timestamp=validated_data.pop('final_timestamp'),
-                            is_reserved=validated_data.pop('is_reserved'),
-                            is_active=validated_data.pop('is_active'),
-                            net_cost=validated_data.pop('net_cost'),
-                            is_paid=validated_data.pop('is_paid')
-                            )
-        return reservation """
+
     def create(self, validated_data):
-        """
-        Overriding the default create method of the Model serializer.
-        :param validated_data: data containing all the details of student
-        :return: returns a successfully created student record
-        """
-        reservation, created = Reservation.objects.update_or_create(vehicle=validated_data.pop('vehicle'), 
-                            parking=validated_data.pop('parking'), 
-                            is_reserved=validated_data.pop('is_reserved'),
-                            is_active=validated_data.pop('is_active'),
-                            net_cost=validated_data.pop('net_cost'),
-                            is_paid=validated_data.pop('is_paid')
-                            )
+        validated_data.pop('parking')
+        validated_data.pop('vehicle')
+        parking = self.context['parking']
+        vehicle = self.context['vehicle']
+        reservation = Reservation.objects.create(**validated_data,
+                                                 vehicle=vehicle,
+                                                 parking=parking)
         return reservation
-    
+
+    def validate_parking(self, data):
+        try:
+            parking = Parking.objects.get(
+                slug_name=data
+            )
+        except Parking.DoesNotExist:
+            raise serializers.ValidationError('Invalid parking slug name.')
+        self.context['parking'] = parking.pk
+        return data
+
+    def validate_vehicle(self, data):
+        try:
+            vehicle = Vehicle.objects.get(
+                license_plate=data
+            )
+        except Vehicle.DoesNotExist:
+            raise serializers.ValidationError('Invalid license plate of vehicle.')
+        self.context['vehicle'] = vehicle.pk
+        return data
