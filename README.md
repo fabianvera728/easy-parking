@@ -41,7 +41,7 @@ The application aims to make it easier for users to find a parking space quickly
 ## 📷 Screenshots
 <div align="center">
   <center>
-    <img width="1500" height="" src='https://svgshare.com/i/b0T.svg' title='' />
+    <img width="1300" height="" src='https://svgshare.com/i/b0L.svg' title='Easy parking' />
   </center>
 </div>
 
