@@ -1,13 +1,20 @@
-<ion-header>
+<ion-header mode="ios" class="ion-no-border">
   <ion-toolbar>
-    <ion-title>Sign up</ion-title>
+    <div>
+      <ion-button  [routerLink]="['/welcome']">
+        <ion-icon size="large" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content mode="ios">
   <form [formGroup]="register_form" action="" class="form">
-    <ion-label>Create your account</ion-label>
+    <ion-text class="ion-text-start ion-padding-top" >
+      <h2><strong>Create your account</strong></h2>
+    </ion-text>
     <div formGroupName="user" class="register__user">
+      <p class="description__input">Username</p>
       <div class="input__custom">
         <ion-icon name="person-outline"></ion-icon>
         <ion-input
@@ -15,6 +22,7 @@
           placeholder="Username"
         ></ion-input>
       </div>
+      <p class="description__input">First name</p>
       <div class="input__custom">
         <ion-icon name="person-outline"></ion-icon>
         <ion-input
@@ -22,10 +30,12 @@
           placeholder="First name"
         ></ion-input>
       </div>
+      <p class="description__input">Last name</p>
       <div class="input__custom">
         <ion-icon name="search-outline"></ion-icon>
         <ion-input formControlName="last_name" placeholder="Last name"></ion-input>
       </div>
+      <p class="description__input">Email</p>
       <div class="input__custom">
         <ion-icon name="search-outline"></ion-icon>
         <ion-input formControlName="email" placeholder="Email"></ion-input>
@@ -38,23 +48,32 @@
           </ion-select-option>
         </ion-select>
       </ion-item>
+      <p class="description__input">Password</p>
       <div class="input__custom">
         <ion-icon name="key-outline"></ion-icon>
         <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
       </div>
     </div>
+    <p class="description__input">Phone number</p>
     <div class="input__custom">
       <ion-icon name="search-outline"></ion-icon>
       <ion-input formControlName="phone_number" type="text" placeholder="Phone number"></ion-input>
     </div>
+    <p class="description__input">Biography</p>
     <div class="input__custom">
       <ion-icon name="search-outline"></ion-icon>
       <ion-input  formControlName="biography" type="text" placeholder="Biography"></ion-input>
     </div>
-  
-    <ion-button (click)="onSubmit()">Register</ion-button>
+    <p class="description__input">Image</p>
+    <div>
+         <ion-input (change)="uploadImage($event)" type="file"></ion-input>
+    </div>
+  <div class="submit__form">
+    <ion-button slot="center" (click)="onSubmit()">Register</ion-button>
+  </div>
+    
   </form>
 </ion-content>
-<pre>
+<!-- <pre>
   {{ register_form.value | json }}
-</pre>
+</pre> -->

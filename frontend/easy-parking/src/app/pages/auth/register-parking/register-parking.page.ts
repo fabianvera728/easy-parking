@@ -2,7 +2,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { IonSlides } from '@ionic/angular';
-import { ParkingService } from '../../core/services/parking/parking/parking.service';
+import { ParkingService } from '../../../core/services/parking/parking/parking.service';
 
 @Component({
   selector: 'app-register-parking',
@@ -11,6 +11,7 @@ import { ParkingService } from '../../core/services/parking/parking/parking.serv
 })
 export class RegisterParkingPage implements OnInit {
 
+  @ViewChild('slideParkingRegister')  slides: IonSlides;
 
   parking_form!: FormGroup;
 
@@ -39,15 +40,20 @@ export class RegisterParkingPage implements OnInit {
         city: new FormControl(),
         street: new FormControl(),
         number_street: new FormControl(),
-        neighbothood: new FormControl(),
+        neighborhood: new FormControl(),
         description: new FormControl()
+      }),
+      places: new FormGroup({
+        car: new FormControl(),
+        motorcycle: new FormControl(),
+        bus: new FormControl()
       })
     });
   }
 
-  /* swipeNext(){
+  swipeNext(){
     this.slides.slideNext();
-  } */
+  }
 
   onSubmit(){
     this.parking_service.createParking(this.parking_form.value).subscribe(

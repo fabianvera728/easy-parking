@@ -66,7 +66,7 @@ export class DetailParkingPage implements OnInit {
   async openModalReservation() {
     const modal = await this.modalCtrl.create({
       component: ModalComponent,
-      componentProps: { slug_name: this.parking.slug_name }
+      componentProps: { parking_slug_name: this.parking.slug_name }
     });
     return await modal.present();
   }

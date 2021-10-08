@@ -1,0 +1,39 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+    <div>
+      <!--  <ion-button (click)="dismiss()" [routerLink]="['/tabs']">
+        <ion-icon size="large" name="chevron-back-outline"></ion-icon>
+      </ion-button> -->
+      <ion-button slot="end" class="modal__cancel"></ion-button>
+      <ion-button (click)="dismiss()" slot="end" class="modal__cancel">
+        Cancel
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+  <ion-item>
+    <ion-button (click)="dismiss()" [routerLink]="['history-reservations']">
+      History reservations
+    </ion-button>
+  </ion-item>
+
+  <ion-slides pager>
+    <ion-slide>
+      <ion-chip>
+        <ion-icon name="call-outline"></ion-icon>
+        <ion-label>Hola mundo como estas</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-icon name="call-outline"></ion-icon>
+        <ion-label>Hola mundo como estas</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-icon name="call-outline"></ion-icon>
+        <ion-label>Hola mundo como estas</ion-label>
+      </ion-chip>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

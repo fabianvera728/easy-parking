@@ -2,18 +2,47 @@
   <ion-toolbar>
     <div>
       <ion-button large>
-        <ion-icon class="brand__icon" size="large" src="../../../assets/icon/brand.svg"></ion-icon>
+        <ion-icon
+          class="brand__icon"
+          size="large"
+          src="../../../assets/icon/brand.svg"
+        ></ion-icon>
       </ion-button>
-      <form (ngSubmit)="onSubmit()" class="input__custom search__background">
+      <form
+        [formGroup]="search_form"
+        (ngSubmit)="onSubmit()"
+        class="input__custom search__background"
+      >
         <ion-icon name="search-outline"></ion-icon>
         <ion-input
           placeholder="Search parking"
+          formControlName="search"
         ></ion-input>
       </form>
     </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="content__custom">
 
+  <div class="contet__image-non-data" *ngIf="parkings.length === 0">
+    <img src="../../../assets/icon/brand.svg" alt="">
+  </div>
+
+<div [routerLink]="['/detail-parking', parking.slug_name]" *ngFor="let parking of parkings">
+  <ion-card >
+    <img
+      src="https://holatelcel.com/wp-content/uploads/2017/08/Smart-Parking-1280x720.jpg"
+    />
+    <div>
+      <ion-card-header>
+        <ion-card-title>{{parking.slug_name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{parking.description}}
+      </ion-card-content>
+    </div>
+  </ion-card>
+</div>
+  
 </ion-content>

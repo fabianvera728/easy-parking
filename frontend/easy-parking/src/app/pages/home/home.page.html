@@ -1,4 +1,4 @@
-<ion-header mode="ios" class="ion-no-border">
+<!-- <ion-header mode="ios" class="ion-no-border">
   <ion-toolbar>
     <div>
       <ion-button large>
@@ -9,10 +9,30 @@
       </ion-button>
     </div>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
+<app-toolbar></app-toolbar>
 
 <ion-content [fullscreen]="true">
-  <div>
+  <ion-slides>
+    
+      <ion-chip>
+        <ion-icon name="car-outline"></ion-icon>
+        <ion-label>Cars</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-icon name="bicycle-outline"></ion-icon>
+        <ion-label>Motorcycles</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-icon name="car-outline"></ion-icon>
+        <ion-label>Cars</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-icon name="bicycle-outline"></ion-icon>
+        <ion-label>Motorcycles</ion-label>
+      </ion-chip>
+  </ion-slides>
+  <div class="ion-padding-top">
     <span><strong>Featured</strong></span>
      <ion-slides pager>
     <ion-slide [routerLink]="['/detail-parking', parking.slug_name]" *ngFor="let parking of parkings" >
@@ -31,6 +51,4 @@
     </ion-slide>
   </ion-slides>
   </div>
- 
-
 </ion-content>

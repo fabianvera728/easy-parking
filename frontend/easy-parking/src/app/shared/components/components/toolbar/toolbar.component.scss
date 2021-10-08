@@ -1,0 +1,40 @@
+ion-toolbar {
+    --padding-end: 1.5rem;
+    --padding-start: 1.5rem;
+    --border-style: none;
+    --background-color: transparent;
+    --background: transparent;
+    --ion-color-base: transparent !important;
+    div{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      ion-button{
+        --background: #ffffff;
+        --padding-end: .5rem;
+        --padding-start: .5rem;
+        --color: rgb(126, 126, 126);
+        --background-activated: rgb(230, 230, 230);
+        --color: rgb(126, 126, 126);
+        --box-shadow: 1px 1px 3px 1px #d8d8d8;
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+      .brand__button{
+       /*  font-size: 20px;
+        zoom: 1.5; */
+        --background: var(--color-primary);
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 20px;
+      }
+      .brand__icon{
+        /*  font-size: 20px;
+         zoom: 1.5; */
+         --background: var(--color-primary);
+         width: 2.5rem;
+         height: 2.5rem;
+         font-size: 20px;
+       }
+    }
+  }

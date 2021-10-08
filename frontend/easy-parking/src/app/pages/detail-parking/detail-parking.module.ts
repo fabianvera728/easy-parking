@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { DetailParkingPageRoutingModule } from './detail-parking-routing.module';
 
 import { DetailParkingPage } from './detail-parking.page';
+import { ComponentsModule } from '../../shared/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetailParkingPageRoutingModule
+    DetailParkingPageRoutingModule,
+    ComponentsModule,
   ],
   declarations: [DetailParkingPage]
 })

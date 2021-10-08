@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -50,12 +51,14 @@ export class ParkingService {
     return this.http.post<any>(`${this.BASE_URL_API}reservations/`, data);
   }
 
-  /* createAddress(address: Address) {
-    return this.http.post<Address>(this.BASE_URL_API + 'addresses/', address);
+  getReservations(){
+    const owner = this.storage_service.getCurrentSession();
+    return this.http.get<any>(`${this.BASE_URL_API}users/${owner.user.user.username}/reservations/`);
   }
 
-  createPrice(price: Price) {
-    return this.http.post<Price>(this.BASE_URL_API + 'prices/', price);
-  } */
+  searchParking(keyword: String){
+    return this.http.get<Parking[]>(`${this.BASE_URL_API}parkings/?search=${keyword}`);
+  }
+
 
 }

@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AuthService } from '../../core/services/auth/auth.service';
-import { StorageService } from '../../core/services/auth/storage/storage.service';
-import { Session } from '../../core/interfaces/utils/Session';
+import { AuthService } from '../../../core/services/auth/auth.service';
+import { StorageService } from '../../../core/services/auth/storage/storage.service';
+import { Session } from '../../../core/interfaces/utils/Session';
 import { Router } from '@angular/router';
 
 @Component({
@@ -39,7 +39,7 @@ export class RegisterPage implements OnInit {
   initRegisterForm() {
     this.register_form = new FormGroup({
       phone_number: new FormControl(),
-      picture: new FormControl('"https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg"'),
+      picture: new FormControl(''),
       biography: new FormControl(),
       user: new FormGroup({
         password: new FormControl(),
@@ -50,6 +50,14 @@ export class RegisterPage implements OnInit {
         email: new FormControl(),
       })
     });
+  }
+
+  uploadImage($event: any){
+    const file: File = $event.target.files[0];
+    console.log(file);
+    this.register_form.patchValue({picture: file});
+    this.register_form.get('picture').updateValueAndValidity();
+    console.log( this.register_form);
   }
 
   onSubmit() {
