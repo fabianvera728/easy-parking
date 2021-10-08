@@ -5,6 +5,7 @@ from rest_framework import serializers
 from easy_parking.users.models.vehicles import Vehicle
 from easy_parking.reservations.models.reservations import Reservation
 from easy_parking.parking_lots.models.parking_lots import Parking
+from easy_parking.reservations.models.places import Place
 
 
 class ReservationSerializer(serializers.ModelSerializer):
@@ -24,9 +25,13 @@ class ReservationSerializer(serializers.ModelSerializer):
         validated_data.pop('vehicle')
         parking = self.context['parking']
         vehicle = self.context['vehicle']
+        if self.not_there_are_places():
+            raise serializers.ValidationError('Not places available.')
+        self.increase_used_places()
         reservation = Reservation.objects.create(**validated_data,
                                                  vehicle=vehicle,
                                                  parking=parking)
+
         return reservation
 
     def validate_parking(self, data):
@@ -49,6 +54,16 @@ class ReservationSerializer(serializers.ModelSerializer):
         self.context['vehicle'] = vehicle
         return data
 
+    def not_there_are_places(self):
+        self.context['place'] = Place.objects.get(parking=self.context['parking'],
+                                                  type=self.context['vehicle'].type)
+        return self.context['place'].remaining_places == 0
+
+    def increase_used_places(self):
+        self.context['place'].used_places = self.context['place'].used_places + 1
+        self.context['place'].remaining_places = self.context['place'].reserved_limit - self.context[
+            'place'].used_places
+        self.context['place'].save()
 
 # class ListReservationSerializer(serializers.ModelSerializer):
 #     class Meta:

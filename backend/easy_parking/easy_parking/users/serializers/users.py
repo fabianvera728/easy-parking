@@ -1,7 +1,3 @@
-# Django
-from django.contrib.auth import password_validation, authenticate
-from django.core.validators import RegexValidator
-
 # Django restframework
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token

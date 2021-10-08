@@ -56,6 +56,7 @@ class ParkingSerializer(serializers.ModelSerializer):
         validate_data_bus = {
             'type': bus_type,
             'reserved_limit': places['bus']['reserved_limit'],
+            'remaining_places': places['bus']['reserved_limit'],
             'parking': parking
         }
         PlaceSerializer.create(PlaceSerializer(), validated_data=validate_data_bus)
@@ -63,6 +64,7 @@ class ParkingSerializer(serializers.ModelSerializer):
         validate_data_car = {
             'type': car_type,
             'reserved_limit': places['car']['reserved_limit'],
+            'remaining_places': places['car']['reserved_limit'],
             'parking': parking
         }
         PlaceSerializer.create(PlaceSerializer(), validated_data=validate_data_car)
@@ -70,6 +72,7 @@ class ParkingSerializer(serializers.ModelSerializer):
         validate_data_motorcycle = {
             'type': motorcycle_type,
             'reserved_limit': places['motorcycle']['reserved_limit'],
+            'remaining_places': places['motorcycle']['reserved_limit'],
             'parking': parking
         }
         PlaceSerializer.create(PlaceSerializer(), validated_data=validate_data_motorcycle)
