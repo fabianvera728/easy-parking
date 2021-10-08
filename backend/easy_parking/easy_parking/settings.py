@@ -100,11 +100,11 @@ WSGI_APPLICATION = 'easy_parking.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "easy_parking",
-        'USER': "admin_parking",
-        'PASSWORD': 'admin123',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': os.environ['POSTGRES_DB'],
+        'USER':  os.environ['POSTGRES_USER'],
+        'PASSWORD':  os.environ['POSTGRES_PASSWORD'],
+        'HOST': os.environ['POSTGRES_HOST'],
+        'PORT': os.environ['POSTGRES_PORT'],
     }
 }
 
