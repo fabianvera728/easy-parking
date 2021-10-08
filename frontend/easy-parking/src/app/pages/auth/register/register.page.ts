@@ -39,7 +39,7 @@ export class RegisterPage implements OnInit {
   initRegisterForm() {
     this.register_form = new FormGroup({
       phone_number: new FormControl(),
-      picture: new FormControl(''),
+      picture: new FormControl(),
       biography: new FormControl(),
       user: new FormGroup({
         password: new FormControl(),

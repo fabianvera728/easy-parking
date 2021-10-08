@@ -19,15 +19,15 @@ export class AuthService {
   logout() { }
 
   register(user: any): Observable<any> {
-    var formData: any = new FormData();
+    console.log(user);
+    const headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data',});
+    const formData: any = new FormData();
     formData.append('phone_number', user.phone_number);
     formData.append('user', user.user);
     formData.append('picture', user.picture);
     formData.append('biography', user.biography);
-    return this.http.post<any>(this.BASE_URL_API + 'users/', 
-    user, {
-      headers: new HttpHeaders({'Content-Type': 'multipart/form-data'})
-    });
+    return this.http.post<any>(this.BASE_URL_API + 'users/',
+    formData, {headers});
   }
 
 }
