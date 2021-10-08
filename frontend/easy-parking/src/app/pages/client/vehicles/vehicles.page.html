@@ -20,17 +20,18 @@
 </app-toolbar>
 
 <ion-content fullscreen="true">
-  <ion-slides pager>
-    <ion-slide>
+  <div *ngIf="vehicles.length > 0">
+     <ion-slides pager>
+    <ion-slide *ngFor="let vehicle of vehicles">
       <div class="vehicles__vehicle">
         <div class="vehicles__vehicle-info">
           <p>Brand</p>
           <ion-text>
-            <h2>{{'Porshe 911'}}</h2>
+            <h2>{{vehicle.brand_vehicle}}</h2>
           </ion-text>
           <p>License plate</p>
           <ion-text>
-            <h2>{{'Porshe 911'}}</h2>
+            <h2>{{vehicle.license_plate}}</h2>
           </ion-text>
         </div>
         <div class="ion-padding-top">
@@ -39,8 +40,8 @@
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyDPyHBj-KgO1EsOL5KjoM_qR14YZG7YwY9STIUmRH0wZ7azh-qBefHyPSNiwSmZvX9_E&usqp=CAU"
             />
             <ion-card-header>
-              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-              <ion-card-title>{{'Porshe 911'}}</ion-card-title>
+              <ion-card-subtitle>{{vehicle.license_plate}}</ion-card-subtitle>
+              <ion-card-title>{{vehicle.brand_vehicle}}</ion-card-title>
             </ion-card-header>
 
             <ion-card-content>
@@ -53,9 +54,11 @@
       </div>
     </ion-slide>
   </ion-slides>
+  </div>
+ 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
+    <ion-fab-button (click)="openModalAddVehicle()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

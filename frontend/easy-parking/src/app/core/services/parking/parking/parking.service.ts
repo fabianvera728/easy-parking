@@ -66,5 +66,18 @@ export class ParkingService {
     return this.http.get<Place>(`${this.BASE_URL_API}parkings/${slug_name}/places`);
   }
 
+  createVehicle(vehicle: any): Observable<any>{
+    const owner: any = this.storage_service.getCurrentSession();
+    console.log(owner.user.user.user.id)
+    const data = {...vehicle, owner: owner.user.user.user.id };
+    console.log(data)
+    return this.http.post<any>(`${this.BASE_URL_API}vehicles/`, data);
+  }
+
+  getVehicles(){
+    const owner: any = this.storage_service.getCurrentSession();
+    return this.http.get<any>(`${this.BASE_URL_API}users/${owner.user.user.user.username}/vehicles/`);
+  }
+
 
 }

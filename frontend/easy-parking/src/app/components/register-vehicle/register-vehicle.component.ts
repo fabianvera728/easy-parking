@@ -5,26 +5,24 @@ import { ParkingService } from '../../core/services/parking/parking/parking.serv
 import { TypesVehicle } from '../../core/interfaces/parking/types';
 import { Vehicle } from '../../core/interfaces/parking/vehicle';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-modal-reservation',
-    templateUrl: './modal-reservation.component.html',
-    styleUrls: ['./modal-reservation.component.scss']
+    templateUrl: './register-vehicle.component.html',
+    styleUrls: ['./register-vehicle.component.scss']
 })
-export class ModalComponent implements OnInit {
+export class RegisterVehicleComponent implements OnInit {
 
 
-    @Input() parking_slug_name: string;
     type_vehicles: TypesVehicle[];
-    vehicles: Vehicle[] = [];
-    reserve_form: FormGroup;
+    vehicle_form: FormGroup;
 
-    constructor(private modalCtrl: ModalController, private parking_service: ParkingService) { }
+    constructor(private modalCtrl: ModalController, private roter: Router, private parking_service: ParkingService) { }
 
     ngOnInit() {
         this.getTypesVehicles();
-        this.initReserveForm();
-        this.getVehicles();
+        this.initVehicleForm();
     }
 
     dismiss() {
@@ -35,38 +33,28 @@ export class ModalComponent implements OnInit {
         this.parking_service.listTypesVehicle().subscribe(
             (data) => {
                 this.type_vehicles = data;
+                this.vehicle_form.patchValue({type: this.type_vehicles[0].id});
             },
             (error) => {
                 console.log(error);
             }
         );
     }
-    getVehicles(){
-        this.parking_service.getVehicles().subscribe(
-          (data) => {
-            this.vehicles = data;
-            console.log(data);
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-      }
 
-    initReserveForm(){
-        this.reserve_form = new FormGroup({
+    initVehicleForm(){
+        this.vehicle_form = new FormGroup({
+            license_plate: new FormControl(),
+            brand_vehicle: new FormControl(),
             description: new FormControl(),
-            vehicle: new FormControl(this.vehicles[0].license_plate),
-            parking: new FormControl(this.parking_slug_name),
-            start_timestamp: new FormControl('1995-04-15'),
-            final_timestamp: new FormControl('1995-04-15'),
+            type: new FormControl(),
         });
     }
 
     onSubmit(){
-        console.log(this.reserve_form.value);
-        this.parking_service.createReservation(this.reserve_form.value).subscribe(
+        console.log(this.vehicle_form.value);
+        this.parking_service.createVehicle(this.vehicle_form.value).subscribe(
             (data) => {
+                this.roter.navigate(['/tabs/vehicles']);
                 this.dismiss();
             },
             (error) => {

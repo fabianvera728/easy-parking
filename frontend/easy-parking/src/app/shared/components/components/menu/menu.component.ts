@@ -5,6 +5,7 @@ import { ParkingService } from '../../../../core/services/parking/parking/parkin
 import { TypesVehicle } from '../../../../core/interfaces/parking/types';
 import { Vehicle } from '../../../../core/interfaces/parking/vehicle';
 import { FormControl, FormGroup } from '@angular/forms';
+import { StorageService } from '../../../../core/services/auth/storage/storage.service';
 
 @Component({
     selector: 'app-modal-reservation',
@@ -17,7 +18,7 @@ export class MenuComponent implements OnInit {
     @Input() parking_slug_name: string;
 
 
-    constructor(private modalCtrl: ModalController, private parking_service: ParkingService) { }
+    constructor(private modalCtrl: ModalController, private storageService: StorageService, private parking_service: ParkingService) { }
 
     ngOnInit() {
 
@@ -25,6 +26,11 @@ export class MenuComponent implements OnInit {
 
     dismiss() {
         this.modalCtrl.dismiss();
+    }
+
+    logout(){
+        this.dismiss();
+        this.storageService.logout();
     }
 
 }

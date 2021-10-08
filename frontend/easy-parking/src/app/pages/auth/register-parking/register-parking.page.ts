@@ -47,11 +47,11 @@ export class RegisterParkingPage implements OnInit {
       }),
       places: new FormGroup({
         car: new FormGroup({
-          type: new FormControl(1),
+          type: new FormControl(2),
           reserved_limit: new FormControl()
         }),
         motorcycle: new FormGroup({
-          type: new FormControl(2),
+          type: new FormControl(1),
           reserved_limit: new FormControl()
         }),
         bus: new FormGroup({

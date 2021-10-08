@@ -6,10 +6,10 @@ const routes: Routes = [
   {
     path: 'welcome',
     loadChildren: () => import('./pages/welcome/welcome.module').then( m => m.WelcomePageModule),
-    canActivate: [AuthorizedGuard],
+    /* canActivate: [AuthorizedGuard],
     data: {
       access: []
-    }
+    } */
   },
   {
     path: '',
@@ -47,10 +47,6 @@ const routes: Routes = [
   {
     path: 'register-parking',
     loadChildren: () => import('./pages/auth/register-parking/register-parking.module').then( m => m.RegisterParkingPageModule)
-  },
-  {
-    path: 'history-reservations',
-    loadChildren: () => import('./pages/client/history-reservations/history-reservations.module').then( m => m.HistoryReservationsPageModule)
   },
   {
     path: 'detail-parking/:slug_name',

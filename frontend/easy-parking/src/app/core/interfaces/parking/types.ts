@@ -3,4 +3,5 @@ export interface TypesVehicle{
     id?: number;
     name: string;
     verbose_name?: string;
+    description?: string;
 }

@@ -45,6 +45,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'reservations',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../../pages/client/history-reservations/history-reservations.module').then(m => m.HistoryReservationsPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'
