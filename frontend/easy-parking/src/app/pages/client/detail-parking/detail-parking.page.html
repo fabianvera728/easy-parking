@@ -1,0 +1,51 @@
+<!-- <ion-header mode="ios" class="ion-no-border" translucent="true">
+  <ion-toolbar>
+    <ion-title>Reservations</ion-title>
+    <div>
+      <ion-button  [routerLink]="['/tabs']">
+        <ion-icon size="large" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header> -->
+
+<app-toolbar></app-toolbar>
+
+<ion-content mode="ios" fullscreen="true">
+  <img class="cardcustom__image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF9WA2xjo1qVcYqbBqNKvFUHXZExMlrMSFZA&usqp=CAU" alt="">
+  <div id="container">
+    <ion-text>
+      <h1><strong>{{parking.slug_name}}</strong></h1>
+    </ion-text>
+    <p>Places</p>
+    <div class="detail__places">
+      <div class="detail__place-item has-bg-motorcycle">
+        <ion-icon name="bicycle-outline"></ion-icon>
+        <p>12</p>
+      </div>
+      <div class="detail__place-item">
+        <ion-icon name="car-outline"></ion-icon>
+        <p>13</p>
+      </div>
+      <div class="detail__place-item">
+        <ion-icon name="bus-outline"></ion-icon>
+        <p>14</p>
+      </div>
+    </div>
+    <div class="ion-padding-top">
+      <span>Description</span>
+      <p class="has-tx-gray-light">
+        Footer is a root component of a page that sits at the bottom of the page.
+       Footer can be a wrapper for ion-toolbar to make sure the content 
+       area is sized correctly.
+      </p>
+     
+    </div>
+    
+  </div>
+</ion-content>
+<ion-footer mode="ios" class="ion-no-border">
+  <ion-toolbar>
+    <ion-button (click)="openModalReservation()" slot="end">Reserve</ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -3,5 +3,5 @@ export interface Price{
     morning: number;
     evening: number;
     night: number;
-    weeekend: number;
+    weekend: number;
 }

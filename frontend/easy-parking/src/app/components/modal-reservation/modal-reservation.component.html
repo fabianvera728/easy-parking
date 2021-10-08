@@ -1,0 +1,78 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Reserve</ion-title>
+    <div>
+      <!--  <ion-button (click)="dismiss()" [routerLink]="['/tabs']">
+        <ion-icon size="large" name="chevron-back-outline"></ion-icon>
+      </ion-button> -->
+      <ion-button
+        slot="end"
+        class="modal__cancel"
+        (click)="dismiss()"
+      ></ion-button>
+      <ion-button slot="end" class="modal__cancel" (click)="dismiss()">
+        Cancel
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+  <div class="modal-reservation__title">
+    <ion-text>
+      <h3>{{ parking_slug_name }}</h3>
+    </ion-text>
+  </div>
+
+  <form action="" [formGroup]="reserve_form">
+    <div>
+      <p class="description__input">Description</p>
+      <div class="input__custom ion-padding-top has-bg-secondary-gray-light">
+        <ion-icon name="text-outline"></ion-icon>
+        <ion-input
+          class="ion-text-start"
+          formControlName="description"
+          placeholder="Description"
+        ></ion-input>
+      </div>
+    </div>
+    <ion-item>
+      <ion-label>Start time</ion-label>
+      <ion-datetime
+        formControlName="start_timestamp"
+        value="1995-04-15"
+        min="1990-02"
+        max="2000"
+        displayFormat="DDD. MMM DD, YY"
+        monthShortNames="jan, feb, mar, apr, mai, jun, jul, aug, sep, okt, nov, des"
+      ></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>End time</ion-label>
+      <ion-datetime
+        formControlName="final_timestamp"
+        value="1995-04-15"
+        min="1990-02"
+        max="2000"
+        displayFormat="DDD. MMM DD, YY"
+        monthShortNames="jan, feb, mar, apr, mai, jun, jul, aug, sep, okt, nov, des"
+      ></ion-datetime>
+    </ion-item>
+
+    <ion-item *ngIf="vehicles.length>0">
+      <ion-label>Select your vehicle</ion-label>
+      <ion-select formControlName="vehicle" [value]="vehicles[0].license_plate">
+        <ion-select-option
+          *ngFor="let vehicle of vehicles"
+          [value]="vehicle.license_plate"
+        >
+          {{ vehicle.brand_vehicle }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <div class="modal-reservation__submit">
+      <ion-button (click)="onSubmit()">Reserve</ion-button>
+    </div>
+  </form>
+</ion-content>

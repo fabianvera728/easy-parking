@@ -1,0 +1,77 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Add vehicle</ion-title>
+    <div>
+      <!--  <ion-button (click)="dismiss()" [routerLink]="['/tabs']">
+        <ion-icon size="large" name="chevron-back-outline"></ion-icon>
+      </ion-button> -->
+      <ion-button
+        slot="end"
+        class="modal__cancel"
+        (click)="dismiss()"
+      ></ion-button>
+      <ion-button slot="end" class="modal__cancel" (click)="dismiss()">
+        Cancel
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+  <div class="modal-reservation__title">
+    <ion-text>
+      <h3>New vehicle</h3>
+    </ion-text>
+  </div>
+
+  <form action="" [formGroup]="vehicle_form">
+    <div>
+      <p class="description__input">Brand Vehicle</p>
+      <div class="input__custom ion-padding-top has-bg-secondary-gray-light">
+        <ion-icon name="text-outline"></ion-icon>
+        <ion-input
+          class="ion-text-start"
+          formControlName="brand_vehicle"
+          placeholder="Brand vehicle"
+        ></ion-input>
+      </div>
+    </div>
+    <div>
+      <p class="description__input">Description</p>
+      <div class="input__custom ion-padding-top has-bg-secondary-gray-light">
+        <ion-icon name="text-outline"></ion-icon>
+        <ion-input
+          class="ion-text-start"
+          formControlName="description"
+          placeholder="Description"
+        ></ion-input>
+      </div>
+    </div>
+    <div>
+      <p class="description__input">License plate</p>
+      <div class="input__custom ion-padding-top has-bg-secondary-gray-light">
+        <ion-icon name="text-outline"></ion-icon>
+        <ion-input
+          class="ion-text-start"
+          formControlName="license_plate"
+          placeholder="License plate"
+        ></ion-input>
+      </div>
+    </div>
+    <ion-item>
+      <ion-label>Type vehicle</ion-label>
+      <ion-select formControlName="type" [value]="type_vehicles[0].id">
+        <ion-select-option
+          *ngFor="let type_vehicle of type_vehicles"
+          [value]="type_vehicle.id"
+        >
+          {{ type_vehicle.name }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <div class="modal-reservation__submit">
+      <ion-button (click)="onSubmit()">Add</ion-button>
+    </div>
+  </form>
+</ion-content>

@@ -49,6 +49,12 @@ class Users(mixins.CreateModelMixin,
         vehicles = Vehicle.objects.filter(owner=self.get_object())
         serializer = VehicleSerializer(vehicles, many=True)
         return Response(serializer.data)
+    
+    @action(detail=True, methods=['get'])
+    def parkings(self, request, *args, **kwargs):
+        parkings = Parking.objects.filter(owner=self.get_object())
+        serializer = ParkingSerializer(parkings, many=True)
+        return Response(serializer.data)
 
     @action(detail=True, methods=['get'])
     def parkings(self, request, *args, **kwargs):

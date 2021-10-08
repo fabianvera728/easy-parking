@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -7,6 +8,8 @@ import { Address } from '../../../interfaces/parking/address';
 import { Price } from '../../../interfaces/parking/price';
 import { Parking } from '../../../interfaces/parking/parking';
 import { StorageService } from '../../auth/storage/storage.service';
+import { TypesVehicle } from '../../../interfaces/parking/types';
+import { Place } from '../../../interfaces/parking/place';
 
 
 @Injectable({
@@ -19,39 +22,62 @@ export class ParkingService {
 
   constructor(private http: HttpClient, private storage_service: StorageService) { }
 
-  listparkings() { }
+  listparkings() {
+    return this.http.get<Parking[]>(`${this.BASE_URL_API}parkings/`);
+  }
 
   createParking(parking: any) {
     const owner = this.storage_service.getCurrentSession().user.user.id;
-    /* let address: number;
-    let price: number;
-
-    this.createAddress(parking.address).subscribe(
-      (data) => {
-        address = data.id;
-      }
-    );
-    this.createPrice(parking.price).subscribe(
-      (data) => {
-        price = data.id;
-      }
-    ); */
-
     const parking_data: any = {
       ...parking.parking,
-      owner: owner
+      address: parking.address,
+      price: parking.price,
+      places: parking.places,
+      owner
     };
     console.log(parking_data);
 
     return this.http.post<Parking>(this.BASE_URL_API + 'parkings/', parking_data);
   }
 
-  /* createAddress(address: Address) {
-    return this.http.post<Address>(this.BASE_URL_API + 'addresses/', address);
+  getParking(slug_name: string){
+    return this.http.get<Parking>(`${this.BASE_URL_API}parkings/${slug_name}/`);
   }
 
-  createPrice(price: Price) {
-    return this.http.post<Price>(this.BASE_URL_API + 'prices/', price);
-  } */
+
+  listTypesVehicle(){
+    return this.http.get<TypesVehicle[]>(`${this.BASE_URL_API}types/`);
+  }
+
+  createReservation(data: any){
+    return this.http.post<any>(`${this.BASE_URL_API}reservations/`, data);
+  }
+
+  getReservations(){
+    const owner = this.storage_service.getCurrentSession();
+    return this.http.get<any>(`${this.BASE_URL_API}users/${owner.user.user.username}/reservations/`);
+  }
+
+  searchParking(keyword: String){
+    return this.http.get<Parking[]>(`${this.BASE_URL_API}parkings/?search=${keyword}`);
+  }
+
+  getParkingPlaces(slug_name: string){
+    return this.http.get<Place>(`${this.BASE_URL_API}parkings/${slug_name}/places`);
+  }
+
+  createVehicle(vehicle: any): Observable<any>{
+    const owner: any = this.storage_service.getCurrentSession();
+    console.log(owner.user.user.user.id)
+    const data = {...vehicle, owner: owner.user.user.user.id };
+    console.log(data)
+    return this.http.post<any>(`${this.BASE_URL_API}vehicles/`, data);
+  }
+
+  getVehicles(){
+    const owner: any = this.storage_service.getCurrentSession();
+    return this.http.get<any>(`${this.BASE_URL_API}users/${owner.user.user.user.username}/vehicles/`);
+  }
+
 
 }

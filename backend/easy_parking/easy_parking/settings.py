@@ -24,7 +24,7 @@ SECRET_KEY = '*s_ct@@3to)1^joq93!g$s*oypo6n7y@55)n0i*at^w)%uee=4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 DJANGO_APPS = [
@@ -66,12 +66,17 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True  # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
 CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:4200',
+    'http://localhost:8100',
 ]  # If this is used, then not need to use `CORS_ALLOW_ALL_ORIGINS = True`
 CORS_ALLOWED_ORIGIN_REGEXES = [
     'http://localhost:4200',
+    'http://localhost:8100',
 ]
+CORS_ALLOW_HEADERS = ['content-disposition', 'accept-encoding',
+                      'content-type',"enctype", 'accept', 'origin', 'authorization']
 
 ROOT_URLCONF = 'easy_parking.urls'
 
@@ -99,11 +104,11 @@ WSGI_APPLICATION = 'easy_parking.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "easy_parking",
-        'USER': "admin_parking",
-        'PASSWORD': 'admin123',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': os.environ['POSTGRES_DB'],
+        'USER':  os.environ['POSTGRES_USER'],
+        'PASSWORD':  os.environ['POSTGRES_PASSWORD'],
+        'HOST': os.environ['POSTGRES_HOST'],
+        'PORT': os.environ['POSTGRES_PORT'],
     }
 }
 

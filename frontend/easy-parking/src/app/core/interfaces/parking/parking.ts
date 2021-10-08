@@ -1,3 +1,5 @@
+import { Address } from './address';
+import { Price } from './price';
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface Parking{
     id?: number;
@@ -5,7 +7,7 @@ export interface Parking{
     slug_name: string;
     description: string;
     phone_number: string;
-    price: number;
-    address: number;
+    price: Price;
+    address: Address;
     limit_image: number;
 }

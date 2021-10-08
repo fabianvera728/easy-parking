@@ -1,0 +1,46 @@
+.modal__cancel{
+    width: max-content;
+}
+
+ion-content {
+    --padding-end: 2rem;
+    --padding-bottom: 4rem;
+    --padding-top: 1rem;
+    --padding-start: 2rem;
+    --background: #ffffff;
+}
+
+
+ion-item{
+    --border-width: 0;
+    --inner-border-width: 0;
+}
+
+.modal-reservation__title{
+    margin-bottom: 3rem;
+}
+
+.modal-reservation__submit{
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.input__custom{
+    background: var(--color-secondary-gray-light);
+}
+
+.description__input{
+    font-size: .8em;
+    color: var(--color-gray-1);
+}
+
+ion-picker{
+    --border-radius: var(--rouded-medium) !important;
+    .picker-wrapper.sc-ion-picker-ios{
+        border-radius:  var(--rouded-medium) !important;
+    }
+}

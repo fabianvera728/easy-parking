@@ -24,30 +24,16 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+@import './styles/shared.scss';
 
-.input__custom {
-  display: flex;
-  align-items: center;
-  background: rgb(255, 255, 255);
-  border-radius: 10px;
-  color: rgb(117, 117, 117);
-  padding: 0.2rem 0.3rem;
-  display: flex;
-  margin: 0.5rem 0.5rem;
-  width: -webkit-fill-available;
-  ion-icon {
-    margin: 0 0.5rem;
-  }
-}
-.input__custom:hover {
-  border: solid 1px rgb(184, 184, 184);
-  color: rgb(80, 80, 80);
-}
-.input__custom:active {
-  border: solid 1px rgb(184, 184, 184);
-  color: gray;
+:root{
+  --color-primary: #F7686A;
+  --color-primary-light: #f8b8b9;
+  --color-secondary-gray-light: #f9f9f9;
+  --color-gray-1: rgb(150, 150, 150);
+  --rounded-small: 5px;
+  --rounded-medium: 10px;
 }
 
-ion-icon {
-  margin: 0 0rem;
-}
+
+
