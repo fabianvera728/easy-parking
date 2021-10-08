@@ -24,6 +24,8 @@ SECRET_KEY = '*s_ct@@3to)1^joq93!g$s*oypo6n7y@55)n0i*at^w)%uee=4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -38,10 +40,10 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
-    "easy_parking.users",
-    "easy_parking.reviews",
-    "easy_parking.parking_lots",
-    "easy_parking.reservations",
+    "easy_parking.users.apps.UsersConfig",
+    "easy_parking.reviews.apps.ReviewsConfig",
+    "easy_parking.parking_lots.apps.ParkingLotsConfig",
+    "easy_parking.reservations.apps.ReservationsConfig",
 ]
 
 THIRD_APPS = [
@@ -49,6 +51,7 @@ THIRD_APPS = [
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_APPS
+AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
