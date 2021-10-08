@@ -18,7 +18,7 @@ class ParkingSerializer(serializers.ModelSerializer):
     address = AddressSerializer()
     price = PriceSerializer()
     places = serializers.DictField(allow_null=True)
-    
+
     class Meta:
         model = Parking
         fields = "__all__"

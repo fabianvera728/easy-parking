@@ -1,5 +1,5 @@
 # Django Restframework
-from rest_framework import mixins, viewsets
+from rest_framework import mixins,status,  viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
@@ -14,6 +14,8 @@ from easy_parking.users.serializers.profile import ProfileSerializer
 from easy_parking.reservations.serializers.reservations import ReservationSerializer
 from easy_parking.users.serializers.vehicles import VehicleSerializer
 from easy_parking.parking_lots.serializers.parking_lots import ParkingSerializer
+from easy_parking.users.serializers.users import UserLoginSerializer
+
 
 class Users(mixins.CreateModelMixin,
             mixins.RetrieveModelMixin,
@@ -23,6 +25,18 @@ class Users(mixins.CreateModelMixin,
     lookup_field = 'user__username'
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
+
+    @action(detail=False, methods=['post'])
+    def login(self, request):
+        """User sign in."""
+        serializer = UserLoginSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user, token = serializer.save()
+        data = {
+            'user': ProfileSerializer(Profile.objects.get(user=user)).data,
+            'access_token': token
+        }
+        return Response(data, status=status.HTTP_201_CREATED)
 
     @action(detail=True, methods=['get'])
     def reservations(self, request, *args, **kwargs):
@@ -36,6 +50,12 @@ class Users(mixins.CreateModelMixin,
         serializer = VehicleSerializer(vehicles, many=True)
         return Response(serializer.data)
     
+    @action(detail=True, methods=['get'])
+    def parkings(self, request, *args, **kwargs):
+        parkings = Parking.objects.filter(owner=self.get_object())
+        serializer = ParkingSerializer(parkings, many=True)
+        return Response(serializer.data)
+
     @action(detail=True, methods=['get'])
     def parkings(self, request, *args, **kwargs):
         parkings = Parking.objects.filter(owner=self.get_object())

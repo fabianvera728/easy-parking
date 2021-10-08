@@ -23,7 +23,7 @@ class Parkings(mixins.CreateModelMixin,
                mixins.ListModelMixin,
                viewsets.GenericViewSet):
     serializer_class = ParkingSerializer
-    queryset = Parking.objects.prefetch_related('place_set').all()
+    queryset = Parking.objects.all()
 
     lookup_field = 'slug_name'
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
@@ -31,6 +31,31 @@ class Parkings(mixins.CreateModelMixin,
     ordering_fields = ['slug_name', 'name', 'reputation', 'price__morning',
                        'price__morning', 'price__evening',
                        'price__night', 'price__weekend']
+
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        for p in serializer.data:
+            places = Place.objects.filter(parking=p['id'])
+            p['places'] = PlaceSerializer(places, many=True).data
+        return Response(serializer.data)
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+
+        places = Place.objects.filter(parking=instance)
+        print(places, serializer.data['places'], 'wilmer\n')
+        serializer.data['places'] = PlaceSerializer(places, many=True).data
+        print(serializer.data['places'], 'wilmer\n')
+        return Response(serializer.data)
 
     @action(detail=True, methods=['get'])
     def reservations(self, request, *args, **kwargs):
