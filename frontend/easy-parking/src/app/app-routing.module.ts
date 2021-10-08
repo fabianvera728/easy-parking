@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthorizedGuard } from './core/guards/authorized.guard';
 
 const routes: Routes = [
   {
     path: 'welcome',
-    loadChildren: () => import('./pages/welcome/welcome.module').then( m => m.WelcomePageModule)
+    loadChildren: () => import('./pages/welcome/welcome.module').then( m => m.WelcomePageModule),
+    canActivate: [AuthorizedGuard],
+    data: {
+      access: []
+    }
   },
   {
     path: '',
@@ -13,7 +18,19 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: ()  => import('./components/tabs/tabs.module').then( m=> m.TabsPageModule)
+    loadChildren: ()  => import('./components/tabs/tabs.module').then( m=> m.TabsPageModule),
+    canActivate: [AuthorizedGuard],
+    data: {
+      access: ['client']
+    }
+  },
+  {
+    path: '',
+    loadChildren: ()  => import('./components/dashboard/dashboard.module').then( m=> m.DashboardPageModule),
+    canActivate: [AuthorizedGuard],
+    data: {
+      access: ['admin']
+    }
   },
 /*   {
     path: 'home',
@@ -33,16 +50,16 @@ const routes: Routes = [
   },
   {
     path: 'history-reservations',
-    loadChildren: () => import('./pages/history-reservations/history-reservations.module').then( m => m.HistoryReservationsPageModule)
-  },
-  {
-    path: 'search',
-    loadChildren: () => import('./pages/search/search.module').then( m => m.SearchPageModule)
+    loadChildren: () => import('./pages/client/history-reservations/history-reservations.module').then( m => m.HistoryReservationsPageModule)
   },
   {
     path: 'detail-parking/:slug_name',
-    loadChildren: () => import('./pages/detail-parking/detail-parking.module').then( m => m.DetailParkingPageModule)
-  },
+    loadChildren: () => import('./pages/client/detail-parking/detail-parking.module').then( m => m.DetailParkingPageModule),
+    canActivate: [AuthorizedGuard],
+    data: {
+      access: ['client']
+    }
+  }
 ];
 
 @NgModule({

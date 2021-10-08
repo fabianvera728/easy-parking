@@ -2,10 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { IonicModule } from '@ionic/angular';
+import { AuthorizedGuard } from '../../core/guards/authorized.guard';
 
 const routes: Routes = [
   {
     path: 'tabs',
+    canActivate: [AuthorizedGuard],
+    data: {
+      access: ['client', 'admin']
+    },
     component: TabsPage,
     children: [
       {
@@ -13,16 +18,20 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../../pages/home/home.module').then( m => m.HomePageModule)
+            loadChildren: () => import('../../pages/client/home/home.module').then(m => m.HomePageModule)
           }
-        ]
+        ],
+        canActivate: [AuthorizedGuard],
+        data: {
+          access: ['client', 'admin']
+        }
       },
       {
         path: 'search',
         children: [
           {
             path: '',
-            loadChildren: () => import('../../pages/search/search.module').then( m => m.SearchPageModule)
+            loadChildren: () => import('../../pages/client/search/search.module').then(m => m.SearchPageModule)
           }
         ]
       },
@@ -31,7 +40,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../../pages/vehicles/vehicles.module').then( m => m.VehiclesPageModule)
+            loadChildren: () => import('../../pages/client/vehicles/vehicles.module').then(m => m.VehiclesPageModule)
           }
         ]
       },
@@ -56,4 +65,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

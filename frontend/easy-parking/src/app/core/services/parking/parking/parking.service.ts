@@ -9,6 +9,7 @@ import { Price } from '../../../interfaces/parking/price';
 import { Parking } from '../../../interfaces/parking/parking';
 import { StorageService } from '../../auth/storage/storage.service';
 import { TypesVehicle } from '../../../interfaces/parking/types';
+import { Place } from '../../../interfaces/parking/place';
 
 
 @Injectable({
@@ -31,6 +32,7 @@ export class ParkingService {
       ...parking.parking,
       address: parking.address,
       price: parking.price,
+      places: parking.places,
       owner
     };
     console.log(parking_data);
@@ -58,6 +60,10 @@ export class ParkingService {
 
   searchParking(keyword: String){
     return this.http.get<Parking[]>(`${this.BASE_URL_API}parkings/?search=${keyword}`);
+  }
+
+  getParkingPlaces(slug_name: string){
+    return this.http.get<Place>(`${this.BASE_URL_API}parkings/${slug_name}/places`);
   }
 
 

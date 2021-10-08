@@ -29,6 +29,15 @@
               placeholder="Slug name"
             ></ion-input>
           </div>
+          <p class="description__input">Name</p>
+          <div class="input__custom">
+            <ion-icon name="person-outline"></ion-icon>
+            <ion-input
+              class="ion-text-start"
+              formControlName="name"
+              placeholder="Name"
+            ></ion-input>
+          </div>
           <p class="description__input">Description</p>
           <div class="input__custom">
             <ion-icon name="text-outline"></ion-icon>
@@ -206,36 +215,36 @@
           <ion-text class="ion-text-start ion-padding-top">
             <h4>Number places</h4>
           </ion-text>
-          <div class="register__user">
-            <div>
+          <div  class="register__user">
+            <div formGroupName="motorcycle">
               <p class="description__input">Motorcycle</p>
               <div class="input__custom">
                 <ion-icon name="bicycle-outline"></ion-icon>
                 <ion-input
                   type="number"
-                  formControlName="motorcycle"
+                  formControlName="reserved_limit"
                   placeholder="Motorcycle"
                 ></ion-input>
               </div>
             </div>
-            <div>
+            <div formGroupName="car">
               <p class="description__input">Car</p>
               <div class="input__custom">
                 <ion-icon name="car-outline"></ion-icon>
                 <ion-input
                   type="number"
-                  formControlName="car"
+                  formControlName="reserved_limit"
                   placeholder="Car"
                 ></ion-input>
               </div>
             </div>
-            <div>
+            <div formGroupName="bus">
               <p class="description__input">Bus</p>
               <div class="input__custom">
                 <ion-icon name="bus-outline"></ion-icon>
                 <ion-input
                   type="number"
-                  formControlName="bus"
+                  formControlName="reserved_limit"
                   placeholder="Bus"
                 ></ion-input>
               </div>

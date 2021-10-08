@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/quotes */
 /* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-import { ModalComponent } from '../../components/modal-reservation/modal-reservation.component';
-import { ParkingService } from '../../core/services/parking/parking/parking.service';
-import { Parking } from '../../core/interfaces/parking/parking';
+import { ModalComponent } from '../../../components/modal-reservation/modal-reservation.component';
+import { ParkingService } from '../../../core/services/parking/parking/parking.service';
+import { Parking } from '../../../core/interfaces/parking/parking';
 
 @Component({
   selector: 'app-detail-parking',

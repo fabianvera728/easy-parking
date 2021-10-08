@@ -39,7 +39,7 @@ export class RegisterPage implements OnInit {
   initRegisterForm() {
     this.register_form = new FormGroup({
       phone_number: new FormControl(),
-      picture: new FormControl(),
+     /*  picture: new FormControl(), */
       biography: new FormControl(),
       user: new FormGroup({
         password: new FormControl(),
@@ -65,8 +65,9 @@ export class RegisterPage implements OnInit {
     this.auth_service.register(this.register_form.value).subscribe(
       (data) => {
         console.log(data);
-        const session: Session = data.data;
-        this.router_service.navigate([session.user.user.is_superuser ? '/register-parking' : '/home']);
+        const session: Session =({user: data}) ;
+        console.log(session);
+        this.router_service.navigate([session.user.user.is_superuser ? '/register-parking' : '/tabs']);
         this.storage_service.setCurrentSession(session);
       },
       (error) => {

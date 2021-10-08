@@ -42,7 +42,7 @@ export class StorageService {
 
   isAuthenticated(): boolean {
     /* return this.getCurrentToken() != null ? true : true; */
-    return this.getCurrentToken() != null ? true : false;
+    return this.getCurrentUser() != null ? true : false;
   }
 
   getCurrentToken(): string | null {

@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { IonSlides } from '@ionic/angular';
 import { ParkingService } from '../../../core/services/parking/parking/parking.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-parking',
@@ -15,7 +16,7 @@ export class RegisterParkingPage implements OnInit {
 
   parking_form!: FormGroup;
 
-  constructor(private parking_service: ParkingService) { }
+  constructor(private parking_service: ParkingService, private router_service: Router) { }
 
   ngOnInit() {
     this.initParkingForm();
@@ -24,6 +25,7 @@ export class RegisterParkingPage implements OnInit {
     this.parking_form = new FormGroup({
       parking: new FormGroup({
         slug_name: new FormControl(),
+        name: new FormControl(),
         description: new FormControl(),
         phone_number: new FormControl(),
         limit_image: new FormControl()
@@ -44,9 +46,18 @@ export class RegisterParkingPage implements OnInit {
         description: new FormControl()
       }),
       places: new FormGroup({
-        car: new FormControl(),
-        motorcycle: new FormControl(),
-        bus: new FormControl()
+        car: new FormGroup({
+          type: new FormControl(1),
+          reserved_limit: new FormControl()
+        }),
+        motorcycle: new FormGroup({
+          type: new FormControl(2),
+          reserved_limit: new FormControl()
+        }),
+        bus: new FormGroup({
+          type: new FormControl(3),
+          reserved_limit: new FormControl()
+        })
       })
     });
   }
@@ -57,7 +68,9 @@ export class RegisterParkingPage implements OnInit {
 
   onSubmit(){
     this.parking_service.createParking(this.parking_form.value).subscribe(
-      (data) => {},
+      (data) => {
+        this.router_service.navigate(['/dashboard']);
+      },
       (error) => {
         console.log(error);
       }

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
-import { ParkingService } from '../../core/services/parking/parking/parking.service';
-import { Parking } from '../../core/interfaces/parking/parking';
+import { ParkingService } from '../../../core/services/parking/parking/parking.service';
+import { Parking } from '../../../core/interfaces/parking/parking';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
