@@ -24,8 +24,6 @@ SECRET_KEY = '*s_ct@@3to)1^joq93!g$s*oypo6n7y@55)n0i*at^w)%uee=4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
-
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -47,7 +45,8 @@ LOCAL_APPS = [
 ]
 
 THIRD_APPS = [
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_APPS
