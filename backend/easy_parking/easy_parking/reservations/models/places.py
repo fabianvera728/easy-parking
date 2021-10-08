@@ -10,7 +10,7 @@ class Place(models.Model):
     """Model definition for Place."""
 
     type = models.ForeignKey(TypeVehicle, on_delete=models.CASCADE)
-    status = models.TextField(max_length=50)
+    status = models.BooleanField(default=False)
     parking = models.ForeignKey(Parking, on_delete=models.CASCADE)
     description = models.TextField(max_length=500, blank=True)
 

@@ -15,6 +15,10 @@ class Vehicle(BaseModel):
     license_plate = models.TextField(max_length=50, unique=True)
     brand_vehicle = models.TextField(max_length=50)
     description = models.TextField(max_length=500, blank=True)
+    image = models.ImageField('vehicle image',
+                              upload_to='vehicles/images/',
+                              blank=True,
+                              null=True)
 
     class Meta:
         """Meta definition for Vehicle."""
