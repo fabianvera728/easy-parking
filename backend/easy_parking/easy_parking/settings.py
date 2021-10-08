@@ -73,6 +73,8 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
     'http://localhost:4200',
     'http://localhost:8100',
 ]
+CORS_ALLOW_HEADERS = ['content-disposition', 'accept-encoding',
+                      'content-type',"enctype", 'accept', 'origin', 'authorization']
 
 ROOT_URLCONF = 'easy_parking.urls'
 

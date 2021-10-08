@@ -6,7 +6,7 @@ services:
     env_file:
       - ./.envs/.postgres
     volumes:
-      - /opt/postgres-data:/var/lib/postgresql/data
+      - ./postgres-data:/var/lib/postgresql/data
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
