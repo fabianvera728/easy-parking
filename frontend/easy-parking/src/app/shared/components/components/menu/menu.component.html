@@ -1,0 +1,49 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+    <div>
+      <ion-button slot="end" class="modal__cancel"></ion-button>
+      <ion-button (click)="dismiss()" slot="end" class="modal__cancel">
+        Cancel
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+  <div class="avatar">
+     <ion-avatar>
+      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+    </ion-avatar>
+  </div>
+   
+  <hr>
+  <ion-list>
+    <ion-card (click)="dismiss()" [routerLink]="['history-reservations']">
+      <ion-icon name="settings-outline"></ion-icon>
+      History reservations
+    </ion-card>
+    <ion-card (click)="dismiss()" [routerLink]="['history-reservations']">
+      <ion-icon name="notifications-outline"></ion-icon>
+      Notifications
+    </ion-card>
+    <ion-card (click)="dismiss()" [routerLink]="['history-reservations']">
+      <ion-icon name="settings-outline"></ion-icon>
+      Preferences
+    </ion-card>
+    <ion-card (click)="dismiss()" [routerLink]="['history-reservations']">
+      <ion-icon name="settings-outline"></ion-icon>
+      Settings
+    </ion-card>
+  </ion-list>
+
+  <div class="avatar">
+    <ion-buttons>
+    <ion-button slot="center" (click)="logout()" >
+    Logout 
+    <ion-icon name="log-out-outline"></ion-icon>
+  </ion-button>
+  </ion-buttons>
+  </div>
+  
+</ion-content>

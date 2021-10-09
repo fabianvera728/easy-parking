@@ -1,0 +1,50 @@
+ion-header {
+  .header-background {
+    background: transparent;
+    backdrop-filter: none !important;
+  }
+}
+ion-toolbar {
+  --background-color: transparent;
+  --ion-color-base: transparent !important;
+  backdrop-filter: none !important;
+}
+
+.cardcustom__image {
+  width: 100%;
+  height: auto;
+  margin-top: -4rem;
+}
+
+#container {
+  padding: 1rem 2rem;
+  border-radius: 2rem 2rem 0 0;
+  margin-top: -2rem;
+  background: #fff;
+  position: relative;
+}
+
+.detail__places {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  .detail__place-item {
+    display: flex;
+    padding: 0.5rem 1rem;
+    flex-direction: column;
+    align-items: center;
+    border-radius: var(--rounded-medium);
+    width: 3rem;
+  }
+}
+
+.has-bg-motorcycle {
+  background: var(--color-primary-light);
+}
+
+ion-footer {
+  padding: 0.5rem 1rem;
+}

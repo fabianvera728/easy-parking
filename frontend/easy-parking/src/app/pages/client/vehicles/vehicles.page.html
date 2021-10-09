@@ -1,0 +1,65 @@
+<!-- <ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Vehicles</ion-title>
+    <div>
+      <ion-button [routerLink]="['/tabs/home']" large>
+        <ion-icon
+          class="brand__icon"
+          size="large"
+          src="../../../assets/icon/brand.svg"
+        ></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon size="large" name="menu-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header> -->
+<app-toolbar>
+  <ion-title>Vehicles</ion-title>
+</app-toolbar>
+
+<ion-content fullscreen="true">
+  <div *ngIf="vehicles.length > 0">
+     <ion-slides pager>
+    <ion-slide *ngFor="let vehicle of vehicles">
+      <div class="vehicles__vehicle">
+        <div class="vehicles__vehicle-info">
+          <p>Brand</p>
+          <ion-text>
+            <h2>{{vehicle.brand_vehicle}}</h2>
+          </ion-text>
+          <p>License plate</p>
+          <ion-text>
+            <h2>{{vehicle.license_plate}}</h2>
+          </ion-text>
+        </div>
+        <div class="ion-padding-top">
+          <ion-card>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyDPyHBj-KgO1EsOL5KjoM_qR14YZG7YwY9STIUmRH0wZ7azh-qBefHyPSNiwSmZvX9_E&usqp=CAU"
+            />
+            <ion-card-header>
+              <ion-card-subtitle>{{vehicle.license_plate}}</ion-card-subtitle>
+              <ion-card-title>{{vehicle.brand_vehicle}}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              Keep close to Nature's heart... and break clear away, once in
+              awhile, and climb a mountain or spend a week in the woods. Wash
+              your spirit clean.
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+  </div>
+ 
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openModalAddVehicle()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
