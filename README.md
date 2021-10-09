@@ -39,7 +39,11 @@ The application aims to make it easier for users to find a parking space quickly
 1. C2 : ``.
 
 ## 📷 Screenshots
-### 🦀 Home
+<div align="center">
+  <center>
+    <img width="1300" height="" src='https://svgshare.com/i/b0L.svg' title='Easy parking' />
+  </center>
+</div>
 
 ## 🖋️ Authors
 

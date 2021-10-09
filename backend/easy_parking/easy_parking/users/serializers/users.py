@@ -1,7 +1,3 @@
-# Django
-from django.contrib.auth import password_validation, authenticate
-from django.core.validators import RegexValidator
-
 # Django restframework
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
@@ -34,4 +30,5 @@ class UserLoginSerializer(serializers.Serializer):
 
     def create(self, data):
         """Generate or retrieve new token."""
-        return self.context['user'], 'wilmer'
+        token, created = Token.objects.get_or_create(user=self.context['user'])
+        return self.context['user'],  token.key
