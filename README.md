@@ -36,7 +36,10 @@ The application aims to make it easier for users to find a parking space quickly
 
 ### 🐋 Configure and run the ionic project
 
-1. C2 : ``.
+1. Install Angular: `npm install -g @angular/cli`.
+2. Install Iconic: `npm install -g @ionic/cli`.
+3. Install dependencies: `npm install`.
+3. Run project: `ionic serve`.
 
 ## 📷 Screenshots
 <div align="center">
