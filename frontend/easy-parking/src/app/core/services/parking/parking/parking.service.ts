@@ -18,12 +18,20 @@ import { Place } from '../../../interfaces/parking/place';
 export class ParkingService {
 
   BASE_URL_API = environment.BASE_URL_API;
-
+  owner = this.storage_service.getCurrentSession();
 
   constructor(private http: HttpClient, private storage_service: StorageService) { }
 
   listparkings() {
     return this.http.get<Parking[]>(`${this.BASE_URL_API}parkings/`);
+  }
+
+  listparkingsforadmin(){
+    return this.http.get<Parking[]>(`${this.BASE_URL_API}users/${this.owner.user.user.username}/parkings/`);
+  }
+
+  listparkingsTop() {
+    return this.http.get<Parking[]>(`${this.BASE_URL_API}parkings/top/`);
   }
 
   createParking(parking: any) {
@@ -67,16 +75,14 @@ export class ParkingService {
   }
 
   createVehicle(vehicle: any): Observable<any>{
-    const owner: any = this.storage_service.getCurrentSession();
-    console.log(owner.user.user.user.id)
-    const data = {...vehicle, owner: owner.user.user.user.id };
-    console.log(data)
+    const owner = this.storage_service.getCurrentSession();
+    const data = {...vehicle, owner: owner.user.user.id };
     return this.http.post<any>(`${this.BASE_URL_API}vehicles/`, data);
   }
 
   getVehicles(){
     const owner: any = this.storage_service.getCurrentSession();
-    return this.http.get<any>(`${this.BASE_URL_API}users/${owner.user.user.user.username}/vehicles/`);
+    return this.http.get<any>(`${this.BASE_URL_API}users/${owner.user.user.username}/vehicles/`);
   }
 
 

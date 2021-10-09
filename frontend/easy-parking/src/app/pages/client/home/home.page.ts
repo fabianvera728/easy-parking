@@ -11,6 +11,7 @@ import { ParkingService } from '../../../core/services/parking/parking/parking.s
 export class HomePage implements OnInit {
 
   parkings: Parking[];
+  parkingsTops: Parking[];
 
   constructor(private parking_service: ParkingService) {}
 
@@ -25,6 +26,14 @@ export class HomePage implements OnInit {
       },
       (error) => {
         console.log('Ocurrio un error');
+      }
+    );
+    this.parking_service.listparkingsTop().subscribe(
+      (data) => {
+        this.parkingsTops = data;
+      },
+      (error) => {
+        console.log(error);
       }
     );
   }

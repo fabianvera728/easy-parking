@@ -31,9 +31,7 @@ export class LoginPage implements OnInit {
   onSubmit() {
     this.auth_service.login(this.loginForm.value).subscribe(
       (data) => {
-        console.log(data);
-        const session: Session =({user: data}) ;
-        console.log(session);
+        const session: Session =(data) ;
         this.router_service.navigate(['/tabs']);
         this.storage_service.setCurrentSession(session);
       },

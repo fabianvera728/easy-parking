@@ -1,0 +1,14 @@
+ion-content {
+    --padding-end: 2rem;
+    --padding-bottom: 4rem;
+    --padding-top: 2rem;
+    --padding-start: 2rem;
+    --background: #ffffff;
+  }
+  
+  ion-card{
+    --background: #fff;
+    border-radius: var(--rounded-medium);
+    box-shadow: 1px 1px 10px 2px #e7e7e7;
+  }
+  

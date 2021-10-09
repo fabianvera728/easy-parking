@@ -65,7 +65,7 @@ export class RegisterPage implements OnInit {
     this.auth_service.register(this.register_form.value).subscribe(
       (data) => {
         console.log(data);
-        const session: Session =({user: data}) ;
+        const session: Session =(data) ;
         console.log(session);
         this.router_service.navigate([session.user.user.is_superuser ? '/register-parking' : '/tabs']);
         this.storage_service.setCurrentSession(session);

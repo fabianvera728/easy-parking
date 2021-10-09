@@ -16,7 +16,15 @@ export class ModalComponent implements OnInit {
 
     @Input() parking_slug_name: string;
     type_vehicles: TypesVehicle[];
-    vehicles: Vehicle[] = [];
+    vehicles: Vehicle[] = [
+        {
+            id: 1,
+            owner: 1,
+            license_plate: 'XLF-402',
+            type: 1,
+            brand_vehicle: 'Ford 350'
+        },
+    ];
     reserve_form: FormGroup;
 
     constructor(private modalCtrl: ModalController, private parking_service: ParkingService) { }

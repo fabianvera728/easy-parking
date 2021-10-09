@@ -23,6 +23,7 @@ export class AuthorizedGuard implements CanActivate {
       return false;
     }
     const user = this.storageService.getCurrentUser();
+    console.log(user);
     const access = route.data["access"];
     const is_autorized = access.some(
         (acc: string) => (acc === "client" && !user.user.is_superuser ) || (acc === "admin" && user.user.is_superuser )

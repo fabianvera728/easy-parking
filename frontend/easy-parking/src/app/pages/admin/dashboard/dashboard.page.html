@@ -7,5 +7,29 @@
 <app-toolbar></app-toolbar>
 
 <ion-content>
+  <div class="ion-padding-top">
+    <span><strong>All parkings</strong></span>
+    <ion-list>
+      <div
+        [routerLink]="['/detail-parking', parking.slug_name]"
+        *ngFor="let parking of parkings"
+      >
+        <ion-card>
+          <img
+            src="https://holatelcel.com/wp-content/uploads/2017/08/Smart-Parking-1280x720.jpg"
+          />
+          <ion-card-header>
+            <ion-card-subtitle>{{parking.address.country+parking.address.street}}</ion-card-subtitle>
+            <ion-card-title>{{parking.slug_name}}</ion-card-title>
+          </ion-card-header>
 
+          <ion-card-content>
+            Keep close to Nature's heart... and break clear away, once in
+            awhile, and climb a mountain or spend a week in the woods. Wash your
+            spirit clean.
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ion-list>
+  </div>
 </ion-content>
